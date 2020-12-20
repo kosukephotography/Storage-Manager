@@ -27,7 +27,14 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item"><a href="#" class="nav-link">予約</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">ストレージ</a></li>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ストレージ</a>
+                    <div class="dropdown-menu">
+                        <a href="/storages" class="dropdown-item">ストレージ一覧</a>
+                        <a href="/storages/create" class="dropdown-item">ストレージ新規作成</a>
+                    </div>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">関連案件情報</a>

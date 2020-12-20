@@ -6,7 +6,7 @@
 
     <div class="m-4">
         <form action="/opportunity_relations/0">
-        <div class="form-group row">
+            <div class="form-group row">
                 <label class="col-2 col-form-label">ストレージID</label>
                 <div class="col-10">
                     <input type="text" class="form-control" name="">

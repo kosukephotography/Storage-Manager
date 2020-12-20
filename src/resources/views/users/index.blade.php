@@ -24,6 +24,7 @@
                 <label class="col-2 col-form-label">管理者フラグ</label>
                 <div class="col-10">
                     <select class="form-control">
+                        <option>どちらも</option>
                         <option>0</option>
                         <option>1</option>
                     </select>
@@ -34,6 +35,7 @@
                 <label class="col-2 col-form-label">失効フラグ</label>
                 <div class="col-10">
                     <select class="form-control">
+                        <option>どちらも</option>
                         <option>0</option>
                         <option>1</option>
                     </select>

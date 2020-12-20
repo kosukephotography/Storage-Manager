@@ -22,6 +22,7 @@
                 <label class="col-2 col-form-label">無効化フラグ</label>
                 <div class="col-10">
                     <select class="form-control">
+                        <option>どちらも</option>
                         <option>0</option>
                         <option>1</option>
                     </select>
