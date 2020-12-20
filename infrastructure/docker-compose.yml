@@ -1,0 +1,43 @@
+version: "3.7"
+volumes:
+  db-store:
+  php-fpm-socket:
+services:
+  app:
+    build: ./docker/php
+    volumes:
+      - php-fpm-socket:/var/run/php-fpm:delegated
+      - ../src:/work:delegated
+      - ./docker/php/bash/.bash_history:/root/.bash_history:delegated
+      - ./docker/php/bash/psysh:/root/.config/psysh:delegated
+    environment:
+      TZ: Asia/Tokyo
+      # Laravel environment
+      DB_CONNECTION: ${DB_CONNECTION}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+  web:
+    build: ./docker/nginx
+    ports:
+      - 8080:80
+    volumes:
+      - php-fpm-socket:/var/run/php-fpm:delegated
+      - ../src:/work:delegated
+    environment:
+      TZ: Asia/Tokyo
+  db:
+    build: ./docker/mysql
+    volumes:
+      - db-store:/var/lib/mysql:delegated
+    ports:
+      - 33306:3306
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      TZ: Asia/Tokyo
