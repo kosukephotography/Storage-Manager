@@ -28,7 +28,15 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a href="#" class="nav-link">予約</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">ストレージ</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">案件関連情報</a></li>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">関連案件情報</a>
+                    <div class="dropdown-menu">
+                        <a href="/opportunity_relations" class="dropdown-item">関連案件情報一覧</a>
+                        <a href="/opportunity_relations/create" class="dropdown-item">関連案件情報新規作成</a>
+                    </div>
+                </li>
+
                 <li class="nav-item dropdown active">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ユーザー</a>
                     <div class="dropdown-menu">
@@ -39,7 +47,13 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="#" class="nav-link">ログアウト</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">マイメニュー</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">マイページ</a>
+                        <a href="#" class="dropdown-item">ログアウト</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -48,14 +62,8 @@
 
     <div class="container">
 
-        <h1 class="text-center">{{ $page_title }}</h1>
-
-        <ul class="alert alert-success" role="alert">
-            <li class="ml-4">成功メッセージ</li>
-        </ul>
-        <ul class="alert alert-danger" role="alert">
-            <li class="ml-4">エラーメッセージ</li>
-        </ul>
+        @include('commons.success_messages')
+        @include('commons.error_messages')
 
         @yield('content')
     </div>

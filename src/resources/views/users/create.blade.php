@@ -2,8 +2,10 @@
 
 @section('content')
 
-<div class="m-4">
-        <form>
+    <h1 class="text-center">ユーザー新規作成ページ</h1>
+
+    <div class="m-4">
+        <form action="/users/0" method="get">
             <div class="form-group row">
                 <label class="col-2 col-form-label">社員番号</label>
                 <div class="col-10">
@@ -12,7 +14,7 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-2 col-form-label">性</label>
+                <label class="col-2 col-form-label">姓</label>
                 <div class="col-10">
                     <input type="text" class="form-control" name="">
                 </div>
@@ -57,12 +59,5 @@
             </div>
         </form>
     </div>
-
-
-
-
-
-
-
 
 @endsection

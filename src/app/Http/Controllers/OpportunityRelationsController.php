@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class OpportunityRelationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        return view('opportunity_relations.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('opportunity_relations.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return view('users.show');
+        return view('opportunity_relations.show');
     }
 
     /**
@@ -56,7 +56,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        return view('users.edit');
+        return view('opportunity_relations.edit');
     }
 
     /**

@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <h1 class="text-center">ユーザー一覧ページ</h1>
+
     <div class="m-4">
         <form>
             <div class="form-group row">
@@ -42,29 +44,33 @@
                 <button type="submit" class="btn btn-primary col-12">検索</button>
             </div>
         </form>
+        <form>
+        <div class="form-group row">
+                <button type="submit" class="btn btn-info col-12">検索結果をcsv出力</button>
+            </div>
+        </form>
+
     </div>
 
+    <table class="table table-hover">
+        <tr class="bg-secondary text-light">
+            <th class="text-center">社員番号</th>
+            <th class="text-center">姓</th>
+            <th class="text-center">名</th>
+            <th class="text-center">管理者フラグ</th>
+            <th class="text-center">失効フラグ</th>
+        </tr>
 
-
-        <table class="table table-hover">
-            <tr class="bg-secondary text-light">
-                <th class="text-center">社員番号</th>
-                <th class="text-center">性</th>
-                <th class="text-center">名</th>
-                <th class="text-center">管理者フラグ</th>
-                <th class="text-center">失効フラグ</th>
+        @for ($i = 0; $i < 25; $i++)
+            <tr>
+                <td class="text-center"><a href="/users/{{$i}}">{{$i}}</a></td>
+                <td class="text-center">浦島</td>
+                <td class="text-center">太郎</td>
+                <td class="text-center">1</td>
+                <td class="text-center">0</td>
             </tr>
+        @endfor
 
-            @for ($i = 0; $i < 25; $i++)
-                <tr>
-                    <td class="text-center"><a href="#">{{$i}}</a></td>
-                    <td class="text-center">浦島</td>
-                    <td class="text-center">太郎</td>
-                    <td class="text-center">1</td>
-                    <td class="text-center">0</td>
-                </tr>
-            @endfor
-
-        </table>
+    </table>
 
 @endsection
