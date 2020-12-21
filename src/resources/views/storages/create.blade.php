@@ -35,6 +35,26 @@
             </div>
 
             <div class="form-group row">
+                <label class="col-2 col-form-label">種別</label>
+                <div class="col-10">
+                    <select class="form-control">
+                        <option>レンタル</option>
+                        <option>リース</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">対応OS</label>
+                <div class="col-10">
+                    <select class="form-control">
+                        <option>Windows</option>
+                        <option>Mac</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <label class="col-2 col-form-label">復旧キー</label>
                 <div class="col-10">
                     <input type="text" class="form-control" name="">

@@ -27,6 +27,10 @@
                 <td>ライブラリ</td>
             </tr>
             <tr>
+                <th class="text-center bg-secondary text-light">対応OS</th>
+                <td>Mac</td>
+            </tr>
+            <tr>
                 <th class="text-center bg-secondary text-light">復旧キー</th>
                 <td>qwertyuiopasdfghjkl</td>
             </tr>

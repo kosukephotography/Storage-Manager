@@ -26,7 +26,13 @@
             <a class="navbar-brand" href="/">Storage Manager</a>
 
             <ul class="navbar-nav">
-                <li class="nav-item"><a href="#" class="nav-link">予約</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">予約</a>
+                    <div class="dropdown-menu">
+                        <a href="/reservations" class="dropdown-item">予約一覧</a>
+                        <a href="/reservations/create" class="dropdown-item">予約新規作成</a>
+                    </div>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ストレージ</a>
@@ -57,8 +63,8 @@
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">マイメニュー</a>
                     <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">マイページ</a>
-                        <a href="#" class="dropdown-item">ログアウト</a>
+                        <a href="/mypage" class="dropdown-item">マイページ</a>
+                        <a href="/" class="dropdown-item">ログアウト</a>
                     </div>
                 </li>
             </ul>

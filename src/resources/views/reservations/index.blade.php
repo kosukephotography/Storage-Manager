@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="text-center">ストレージ一覧ページ</h1>
+    <h1 class="text-center">予約一覧ページ</h1>
 
     <div class="m-4">
         <form>
@@ -72,41 +72,6 @@
 
     </div>
 
-    <table class="table table-hover">
-        <tr class="bg-secondary text-light">
-            <th class="text-center">ID</th>
-            <th class="text-center">容量</th>
-            <th class="text-center">種別</th>
-            <th class="text-center">対応OS</th>
-            <th class="text-center">抹消フラグ</th>
-            <th class="text-center">関連案件ID</th>
-        </tr>
 
-        @for ($i = 0; $i < 10; $i++)
-            <tr>
-                <td class="text-center"><a href="/storages/{{$i}}">ST00000{{$i}}</a></td>
-                <td class="text-center">2TB</td>
-                <td class="text-center">レンタル</td>
-                <td class="text-center">Windows</td>
-                <td class="text-center">0</td>
-                <td class="text-center"></td>
-            </tr>
-        @endfor
-
-        <tr>
-            <td class="text-center"><a href="/storages/{{$i}}">ST000010</a></td>
-            <td class="text-center">4TB</td>
-            <td class="text-center">ライブラリ</td>
-            <td class="text-center">Mac</td>
-            <td class="text-center">0</td>
-            <td class="text-center">
-                <ul>
-                    <li>PR123456789</li>
-                    <li>PR123456789</li>
-                </ul>
-            </td>
-        </tr>
-
-    </table>
 
 @endsection

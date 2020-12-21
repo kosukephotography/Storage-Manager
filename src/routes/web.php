@@ -25,3 +25,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('users', 'App\Http\Controllers\UsersController');
 Route::resource('opportunity_relations', 'App\Http\Controllers\OpportunityRelationsController');
 Route::resource('storages', 'App\Http\Controllers\StoragesController');
+Route::resource('reservations', 'App\Http\Controllers\ReservationsController');
+Route::get('mypage', 'App\Http\Controllers\UsersController@mypage');
