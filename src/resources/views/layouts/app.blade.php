@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>.container { margin-bottom: 7rem; }</style>
 </head>
 <body>
     <header class="sticky-top mb-4">
@@ -83,7 +84,7 @@
 
 
 
-    <footer class="text-center p-3 border-top bg-dark text-light">
+    <footer class="text-center p-3 border-top bg-dark text-light fixed-bottom">
         2020 Kosuke Systems.
     </footer>
 
