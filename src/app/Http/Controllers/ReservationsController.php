@@ -23,7 +23,7 @@ class ReservationsController extends Controller
      */
     public function create()
     {
-        //
+        return view('reservations.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class ReservationsController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('reservations.show');
     }
 
     /**
@@ -56,7 +56,7 @@ class ReservationsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('reservations.edit');
     }
 
     /**
@@ -80,5 +80,9 @@ class ReservationsController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function dashboard()
+    {
+        return view('reservations.dashboard');
     }
 }

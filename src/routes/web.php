@@ -27,3 +27,4 @@ Route::resource('opportunity_relations', 'App\Http\Controllers\OpportunityRelati
 Route::resource('storages', 'App\Http\Controllers\StoragesController');
 Route::resource('reservations', 'App\Http\Controllers\ReservationsController');
 Route::get('mypage', 'App\Http\Controllers\UsersController@mypage');
+Route::get('dashboard', 'App\Http\Controllers\ReservationsController@dashboard');

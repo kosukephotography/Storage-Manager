@@ -27,6 +27,10 @@
             <a class="navbar-brand" href="/">Storage Manager</a>
 
             <ul class="navbar-nav">
+                <li class="nav-item"><a href="/dashboard" class="nav-link">予約ダッシュボード</a></li>
+            </ul>
+
+            <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">予約</a>
                     <div class="dropdown-menu">
