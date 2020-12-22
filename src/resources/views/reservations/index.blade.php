@@ -14,49 +14,43 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-2 col-form-label">容量</label>
+                <label class="col-2 col-form-label">ストレージID</label>
                 <div class="col-10">
                     <input type="text" class="form-control" name="">
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-2 col-form-label">種別</label>
-                <div class="col-10">
-                    <select class="form-control">
-                        <option>どちらも</option>
-                        <option>レンタル</option>
-                        <option>ライブラリ</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-2 col-form-label">対応OS</label>
-                <div class="col-10">
-                    <select class="form-control">
-                        <option>どちらも</option>
-                        <option>Windows</option>
-                        <option>Mac</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-2 col-form-label">抹消フラグ</label>
-                <div class="col-10">
-                    <select class="form-control">
-                        <option>どちらも</option>
-                        <option>0</option>
-                        <option>1</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-2 col-form-label">関連案件ID</label>
+                <label class="col-2 col-form-label">予約者</label>
                 <div class="col-10">
                     <input type="text" class="form-control" name="">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">予約ステータス</label>
+                <div class="col-10">
+                    <select class="form-control">
+                        <option>すべて</option>
+                        <option>予約中</option>
+                        <option>貸出済</option>
+                        <option>期限切れ未返却</option>
+                        <option>返却済</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">検索開始日</label>
+                <div class="col-10">
+                    <input type="date" class="form-control" name="">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">検索終了日</label>
+                <div class="col-10">
+                    <input type="date" class="form-control" name="">
                 </div>
             </div>
 

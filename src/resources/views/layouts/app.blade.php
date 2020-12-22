@@ -31,7 +31,6 @@
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">予約</a>
                     <div class="dropdown-menu">
                         <a href="/reservations" class="dropdown-item">予約一覧</a>
-                        <a href="/reservations/create" class="dropdown-item">予約新規作成</a>
                     </div>
                 </li>
 
