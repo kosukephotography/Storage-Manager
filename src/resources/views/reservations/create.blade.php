@@ -14,20 +14,6 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-2 col-form-label">予約ステータス</label>
-            <div class="col-10">
-                <select class="form-control">
-                    <option>すべて</option>
-                    <option>予約中</option>
-                    <option>貸出済</option>
-                    <option>期限切れ未返却</option>
-                    <option>返却済</option>
-                    <option>キャンセル</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group row">
             <label class="col-2 col-form-label">予約開始日</label>
             <div class="col-10">
                 <input type="date" class="form-control" name="">

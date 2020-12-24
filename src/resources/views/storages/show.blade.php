@@ -71,6 +71,10 @@
                 <th class="text-center bg-secondary text-light">最終更新者</th>
                 <td>浦島　太郎</td>
             </tr>
+            <tr>
+                <th class="text-center bg-secondary text-light">現在の利用者</th>
+                <td>浦島　太郎</td>
+            </tr>
         </table>
     </div>
 
