@@ -69,23 +69,6 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-2 col-form-label">抹消フラグ</label>
-                <div class="col-10">
-                    <select class="form-control">
-                        <option>0</option>
-                        <option>1</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-2 col-form-label">抹消理由</label>
-                <div class="col-10">
-                    <textarea class="form-control" rows="3"></textarea>
-                </div>
-            </div>
-
-            <div class="form-group row">
                 <button type="submit" class="btn btn-primary col-12">作成</button>
             </div>
         </form>

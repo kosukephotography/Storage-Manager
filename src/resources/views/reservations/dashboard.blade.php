@@ -69,57 +69,55 @@
     <button type="button" class="btn btn-light m-1">▶</button>
     <button type="button" class="btn btn-light m-1">今月</button>
 
-    <table class="table table-hover table-bordered">
+    <div class="table-wrap mt-2">
+        <table class="table table-hover table-bordered">
 
-    <tr>
-        <th class="bg-secondary text-light"></th>
-        <th class="text-danger">金</th>
-        <th class="">土</th>
-        <th class="text-danger">日</th>
-        <th class="">月</th>
-        <th class="">火</th>
-        <th class="">水</th>
-        <th class="">木</th>
-        <th class="">金</th>
-        <th class="">土</th>
-        <th class="text-danger">日</th>
-        <th class="text-danger">月</th>
-        <th class="">火</th>
-        <th class="">水</th>
-        <th class="">木</th>
-        <th class="">金</th>
-        <th class="">土</th>
-        <th class="text-danger">日</th>
-        <th class="">月</th>
-        <th class="">火</th>
-        <th class="">水</th>
-        <th class="">木</th>
-        <th class="">金</th>
-        <th class="">土</th>
-        <th class="text-danger">日</th>
-        <th class="">月</th>
-        <th class="">火</th>
-        <th class="">水</th>
-        <th class="">木</th>
-        <th class="">金</th>
-        <th class="">土</th>
-        <th class="text-danger">日</th>
-    </tr>
+            <tr>
+                <th class="bg-secondary text-light"></th>
+                <th class="text-danger">金</th>
+                <th class="">土</th>
+                <th class="text-danger">日</th>
+                <th class="">月</th>
+                <th class="">火</th>
+                <th class="">水</th>
+                <th class="">木</th>
+                <th class="">金</th>
+                <th class="">土</th>
+                <th class="text-danger">日</th>
+                <th class="text-danger">月</th>
+                <th class="">火</th>
+                <th class="">水</th>
+                <th class="">木</th>
+                <th class="">金</th>
+                <th class="">土</th>
+                <th class="text-danger">日</th>
+                <th class="">月</th>
+                <th class="">火</th>
+                <th class="">水</th>
+                <th class="">木</th>
+                <th class="">金</th>
+                <th class="">土</th>
+                <th class="text-danger">日</th>
+                <th class="">月</th>
+                <th class="">火</th>
+                <th class="">水</th>
+                <th class="">木</th>
+                <th class="">金</th>
+                <th class="">土</th>
+                <th class="text-danger">日</th>
+            </tr>
 
-
-
-    @for ($s = 0; $s < 10; $s++)
-        <tr>
-            <th class="text-center bg-secondary text-light">ST00000{{$s}}</th>
-            @for ($i = 1; $i < 32; $i++)
-                <td><a href="/reservations/create">{{$i}}</a></td>
+            @for ($s = 0; $s < 10; $s++)
+                <tr>
+                    <th class="text-center bg-secondary text-light">ST00000{{$s}}</th>
+                    @for ($i = 1; $i < 32; $i++)
+                        <td><a href="/reservations/create">{{$i}}</a></td>
+                    @endfor
+                </tr>
             @endfor
-        </tr>
-    @endfor
 
-
-        <tr>
-            <th class="text-center bg-secondary text-light">ST000010</th>
+            <tr>
+                <th class="text-center bg-secondary text-light">ST000010</th>
                 <td><a href="/reservations/create">1</a></td>
                 <td><a href="/reservations/create">2</a></td>
                 <td><a href="/reservations/create">3</a></td>
@@ -151,11 +149,13 @@
                 <td class="bg-secondary"></td>
                 <td><a href="/reservations/create">30</a></td>
                 <td><a href="/reservations/create">31</a></td>
-        </tr>
+            </tr>
+        </table>
+    </div>
 
 
 
-    </table>
+
 
 
 

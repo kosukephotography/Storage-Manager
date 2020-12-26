@@ -72,8 +72,8 @@
                 <label class="col-2 col-form-label">抹消フラグ</label>
                 <div class="col-10">
                     <select class="form-control">
-                        <option>0</option>
-                        <option>1</option>
+                        <option></option>
+                        <option>抹消済</option>
                     </select>
                 </div>
             </div>

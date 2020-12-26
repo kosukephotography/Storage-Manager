@@ -19,7 +19,14 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>.container { margin-bottom: 7rem; }</style>
+    <style>
+        .container {
+            margin-bottom: 7rem;
+        }
+        .table-wrap {
+            overflow-x: auto;
+        }
+    </style>
 </head>
 <body>
     <header class="sticky-top mb-4">
