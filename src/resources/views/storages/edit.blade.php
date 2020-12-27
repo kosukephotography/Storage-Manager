@@ -71,9 +71,9 @@
             <div class="form-group row">
                 <label class="col-2 col-form-label">抹消フラグ</label>
                 <div class="col-10">
-                    <select class="form-control">
-                        <option></option>
-                        <option>抹消済</option>
+                    <select class="form-control" name="is_delete" id="is_delete">
+                        <option value="無効">無効</option>
+                        <option value="有効">有効</option>
                     </select>
                 </div>
             </div>
@@ -81,7 +81,7 @@
             <div class="form-group row">
                 <label class="col-2 col-form-label">抹消理由</label>
                 <div class="col-10">
-                    <textarea class="form-control" rows="3"></textarea>
+                    <textarea class="form-control" rows="3" id="reason"></textarea>
                 </div>
             </div>
 

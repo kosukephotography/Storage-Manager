@@ -23,8 +23,8 @@
                 <div class="col-10">
                     <select class="form-control">
                         <option>どちらも</option>
-                        <option>0</option>
-                        <option>1</option>
+                        <option>無効</option>
+                        <option>有効</option>
                     </select>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                     <td class="text-center"><a href="/opportunity_relations/0">{{$i}}</a></td>
                     <td class="text-center">ST000001</td>
                     <td class="text-center">PR123456789</td>
-                    <td class="text-center">0</td>
+                    <td class="text-center">無効</td>
                 </tr>
             @endfor
 

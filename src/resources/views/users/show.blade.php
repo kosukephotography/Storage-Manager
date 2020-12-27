@@ -28,11 +28,11 @@
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">管理者フラグ</th>
-                <td>1</td>
+                <td>無効</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">失効フラグ</th>
-                <td>1</td>
+                <td>無効</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">作成日</th>

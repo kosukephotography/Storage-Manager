@@ -21,12 +21,19 @@
             </div>
 
             <div class="form-group row">
+                <label class="col-2 col-form-label">メールアドレス</label>
+                <div class="col-10">
+                    <input type="text" class="form-control" name="">
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <label class="col-2 col-form-label">管理者フラグ</label>
                 <div class="col-10">
                     <select class="form-control">
                         <option>どちらも</option>
-                        <option>0</option>
-                        <option>1</option>
+                        <option>無効</option>
+                        <option>有効</option>
                     </select>
                 </div>
             </div>
@@ -36,8 +43,8 @@
                 <div class="col-10">
                     <select class="form-control">
                         <option>どちらも</option>
-                        <option>0</option>
-                        <option>1</option>
+                        <option>無効</option>
+                        <option>有効</option>
                     </select>
                 </div>
             </div>
@@ -68,8 +75,8 @@
                 <td class="text-center"><a href="/users/{{$i}}">{{$i}}</a></td>
                 <td class="text-center">浦島</td>
                 <td class="text-center">太郎</td>
-                <td class="text-center">1</td>
-                <td class="text-center">0</td>
+                <td class="text-center">無効</td>
+                <td class="text-center">無効</td>
             </tr>
         @endfor
 

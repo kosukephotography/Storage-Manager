@@ -47,8 +47,8 @@
                 <div class="col-10">
                     <select class="form-control">
                         <option>どちらも</option>
-                        <option>0</option>
-                        <option>1</option>
+                        <option>無効</option>
+                        <option>有効</option>
                     </select>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                 <td class="text-center">2TB</td>
                 <td class="text-center">レンタル</td>
                 <td class="text-center">Windows</td>
-                <td class="text-center">0</td>
+                <td class="text-center">無効</td>
                 <td class="text-center"></td>
             </tr>
         @endfor
@@ -98,7 +98,7 @@
             <td class="text-center">4TB</td>
             <td class="text-center">ライブラリ</td>
             <td class="text-center">Mac</td>
-            <td class="text-center">0</td>
+            <td class="text-center">無効</td>
             <td class="text-center">
                 <ul>
                     <li>PR123456789</li>

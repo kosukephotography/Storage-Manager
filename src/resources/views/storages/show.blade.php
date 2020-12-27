@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">抹消フラグ</th>
-                <td></td>
+                <td>無効</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">抹消理由</th>

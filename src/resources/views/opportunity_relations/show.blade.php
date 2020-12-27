@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">無効化フラグ</th>
-                <td>0</td>
+                <td>無効</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">作成日</th>
