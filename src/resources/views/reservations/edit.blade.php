@@ -28,14 +28,14 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-2 col-form-label">予約開始日</label>
+                <label class="col-2 col-form-label">利用開始日</label>
                 <div class="col-10">
                     <input type="date" class="form-control" name="">
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-2 col-form-label">予約終了日</label>
+                <label class="col-2 col-form-label">利用終了日</label>
                 <div class="col-10">
                     <input type="date" class="form-control" name="">
                 </div>

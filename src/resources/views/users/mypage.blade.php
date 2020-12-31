@@ -13,16 +13,16 @@
                 <td>NNNNNNNN</td>
             </tr>
             <tr>
+                <th class="text-center bg-secondary text-light">メールアドレス</th>
+                <td>test@test.com</td>
+            </tr>
+            <tr>
                 <th class="text-center bg-secondary text-light">姓</th>
                 <td>浦島</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">名</th>
                 <td>太郎</td>
-            </tr>
-            <tr>
-                <th class="text-center bg-secondary text-light">メールアドレス</th>
-                <td>test@test.com</td>
             </tr>
         </table>
     </div>
@@ -33,7 +33,7 @@
         </div>
     </form>
 
-    <h2 class="text-center pt-5">過去の予約情報</h2>
+    <h2 class="text-center pt-5">有効な予約情報</h2>
 
     <table class="table table-hover mt-4">
         <tr class="bg-secondary text-light">
@@ -44,7 +44,7 @@
             <th class="text-center">予約終了日</th>
         </tr>
 
-        @for ($i = 0; $i < 10; $i++)
+        @for ($i = 0; $i < 4; $i++)
             <tr>
                 <td class="text-center"><a href="/reservations/{{$i}}">RS00000{{$i}}</a></td>
                 <td class="text-center"><a href="/storages/{{$i}}">ST00000{{$i}}</a></td>

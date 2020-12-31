@@ -64,8 +64,8 @@
     <table class="table table-hover">
         <tr class="bg-secondary text-light">
             <th class="text-center">社員番号</th>
-            <th class="text-center">姓</th>
-            <th class="text-center">名</th>
+            <th class="text-center">名前</th>
+            <th class="text-center">メールアドレス</th>
             <th class="text-center">管理者フラグ</th>
             <th class="text-center">失効フラグ</th>
         </tr>
@@ -73,8 +73,8 @@
         @for ($i = 0; $i < 25; $i++)
             <tr>
                 <td class="text-center"><a href="/users/{{$i}}">{{$i}}</a></td>
-                <td class="text-center">浦島</td>
-                <td class="text-center">太郎</td>
+                <td class="text-center">浦島　太郎</td>
+                <td class="text-center">test@test.com</td>
                 <td class="text-center">無効</td>
                 <td class="text-center">無効</td>
             </tr>
