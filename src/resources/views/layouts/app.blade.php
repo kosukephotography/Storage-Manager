@@ -27,52 +27,61 @@
         <nav class="navbar navbar-expand navbar-dark bg-dark"> 
             <a class="navbar-brand" href="/">Storage Manager</a>
 
-            <ul class="navbar-nav">
-                <li class="nav-item"><a href="/dashboard" class="nav-link">予約ダッシュボード</a></li>
-            </ul>
+            @if (Auth::check())
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="/dashboard" class="nav-link">予約ダッシュボード</a></li>
+                </ul>
 
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">予約</a>
-                    <div class="dropdown-menu">
-                        <a href="/reservations" class="dropdown-item">予約一覧</a>
-                    </div>
-                </li>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">予約</a>
+                        <div class="dropdown-menu">
+                            <a href="/reservations" class="dropdown-item">予約一覧</a>
+                        </div>
+                    </li>
 
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ストレージ</a>
-                    <div class="dropdown-menu">
-                        <a href="/storages" class="dropdown-item">ストレージ一覧</a>
-                        <a href="/storages/create" class="dropdown-item">ストレージ新規作成</a>
-                    </div>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ストレージ</a>
+                        <div class="dropdown-menu">
+                            <a href="/storages" class="dropdown-item">ストレージ一覧</a>
+                            <a href="/storages/create" class="dropdown-item">ストレージ新規作成</a>
+                        </div>
+                    </li>
 
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">関連案件情報</a>
-                    <div class="dropdown-menu">
-                        <a href="/opportunity_relations" class="dropdown-item">関連案件情報一覧</a>
-                        <a href="/opportunity_relations/create" class="dropdown-item">関連案件情報新規作成</a>
-                    </div>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">関連案件情報</a>
+                        <div class="dropdown-menu">
+                            <a href="/opportunity_relations" class="dropdown-item">関連案件情報一覧</a>
+                            <a href="/opportunity_relations/create" class="dropdown-item">関連案件情報新規作成</a>
+                        </div>
+                    </li>
 
-                <li class="nav-item dropdown active">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ユーザー</a>
-                    <div class="dropdown-menu">
-                        <a href="/users" class="dropdown-item">ユーザー一覧</a>
-                        <a href="/users/create" class="dropdown-item">ユーザー新規作成</a>
-                    </div>
-                </li>
-            </ul>
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ユーザー</a>
+                        <div class="dropdown-menu">
+                            <a href="/users" class="dropdown-item">ユーザー一覧</a>
+                            <a href="/users/create" class="dropdown-item">ユーザー新規作成</a>
+                        </div>
+                    </li>
+                </ul>
 
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">マイメニュー</a>
-                    <div class="dropdown-menu">
-                        <a href="/mypage" class="dropdown-item">マイページ</a>
-                        <a href="/" class="dropdown-item">ログアウト</a>
-                    </div>
-                </li>
-            </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">マイメニュー</a>
+                        <div class="dropdown-menu">
+                            <a href="/mypage" class="dropdown-item">マイページ</a>
+
+                            <form action="/logout" method="post">
+                                @csrf
+                                <input type="submit" value="ログアウト" class="dropdown-item">
+                            </form>
+
+                        </div>
+                    </li>
+                </ul>
+
+            @endif
+
         </nav>
     </header>
 

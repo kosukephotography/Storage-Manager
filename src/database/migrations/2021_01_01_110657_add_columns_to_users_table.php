@@ -16,6 +16,7 @@ class AddColumnsToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('family_name', 20);
             $table->string('first_name', 20);
+            $table->string('employee_number', 8)->unique();
             $table->boolean('is_admin')->default(false);
             $table->softDeletes();
             $table->foreignId('created_by')->constrained('users');
@@ -36,6 +37,7 @@ class AddColumnsToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('family_name');
             $table->dropColumn('first_name');
+            $table->dropColumn('employee_number');
             $table->dropColumn('is_admin');
             $table->dropColumn('deleted_at');
             $table->dropForeign(['created_by']);

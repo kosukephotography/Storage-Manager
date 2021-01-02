@@ -21,9 +21,10 @@ class DatabaseSeeder extends Seeder
         for($i = 1; $i <= 5; $i++) {
             DB::table('users')->insert([
                 'email' => 'test' . $i . '@test.com',
-                'password' => '12345678',
+                'password' => bcrypt('secret'),
                 'family_name' => 'テスト' . $i,
                 'first_name' => '太郎',
+                'employee_number' => '01908' . $i,
                 'is_admin' => '1',
                 'created_by' => '1',
                 'updated_by' => '1',
