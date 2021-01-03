@@ -7,7 +7,7 @@
     <div class="m-4">
         <form>
             <div class="form-group row">
-                <label class="col-2 col-form-label">ID</label>
+                <label class="col-2 col-form-label">予約ID</label>
                 <div class="col-10">
                     <input type="text" class="form-control" name="">
                 </div>
@@ -68,7 +68,7 @@
 
     <table class="table table-hover">
         <tr class="bg-secondary text-light">
-            <th class="text-center">予約番号</th>
+            <th class="text-center">予約ID</th>
             <th class="text-center">ストレージID</th>
             <th class="text-center">予約者</th>
             <th class="text-center">予約ステータス</th>

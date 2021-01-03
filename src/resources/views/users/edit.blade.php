@@ -14,6 +14,13 @@
             </div>
 
             <div class="form-group row">
+                <label class="col-2 col-form-label">メールアドレス</label>
+                <div class="col-10">
+                    <input type="email" class="form-control" name="">
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <label class="col-2 col-form-label">姓</label>
                 <div class="col-10">
                     <input type="text" class="form-control" name="">
@@ -24,13 +31,6 @@
                 <label class="col-2 col-form-label">名</label>
                 <div class="col-10">
                     <input type="text" class="form-control" name="">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-2 col-form-label">メールアドレス</label>
-                <div class="col-10">
-                    <input type="email" class="form-control" name="">
                 </div>
             </div>
 

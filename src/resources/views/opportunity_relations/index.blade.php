@@ -54,7 +54,7 @@
                 <tr>
                     <td class="text-center"><a href="/opportunity_relations/0">{{$i}}</a></td>
                     <td class="text-center">ST000001</td>
-                    <td class="text-center">PR123456789</td>
+                    <td class="text-center">PR123456</td>
                     <td class="text-center">無効</td>
                 </tr>
             @endfor

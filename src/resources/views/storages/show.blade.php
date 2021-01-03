@@ -19,6 +19,14 @@
                 <td>2TB</td>
             </tr>
             <tr>
+                <th class="text-center bg-secondary text-light">メーカー</th>
+                <td>BUFFALO</td>
+            </tr>
+            <tr>
+                <th class="text-center bg-secondary text-light">型番</th>
+                <td>SO505i</td>
+            </tr>
+            <tr>
                 <th class="text-center bg-secondary text-light">シリアルナンバー</th>
                 <td>SN12345678</td>
             </tr>
@@ -57,7 +65,7 @@
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">作成日</th>
-                <td>YYYY/MM/DD</td>
+                <td>1970-01-01 00:00:01.000000</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">作成者</th>
@@ -65,7 +73,7 @@
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">最終更新日</th>
-                <td>YYYY/MM/DD</td>
+                <td>1970-01-01 00:00:01.000000</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">最終更新者</th>

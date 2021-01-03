@@ -7,6 +7,20 @@
     <div class="m-4">
         <form action="/storages/0" method="get">
             <div class="form-group row">
+                <label class="col-2 col-form-label">ストレージID</label>
+                <div class="col-10">
+                    <input type="text" class="form-control" name="">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">容量</label>
+                <div class="col-10">
+                    <input type="text" class="form-control" name="">
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <label class="col-2 col-form-label">メーカー</label>
                 <div class="col-10">
                     <input type="text" class="form-control" name="">
@@ -15,13 +29,6 @@
 
             <div class="form-group row">
                 <label class="col-2 col-form-label">型番</label>
-                <div class="col-10">
-                    <input type="text" class="form-control" name="">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-2 col-form-label">容量</label>
                 <div class="col-10">
                     <input type="text" class="form-control" name="">
                 </div>

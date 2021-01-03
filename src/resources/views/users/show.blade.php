@@ -15,16 +15,16 @@
                 <td>NNNNNNNN</td>
             </tr>
             <tr>
+                <th class="text-center bg-secondary text-light">メールアドレス</th>
+                <td>test@test.com</td>
+            </tr>
+            <tr>
                 <th class="text-center bg-secondary text-light">姓</th>
                 <td>浦島</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">名</th>
                 <td>太郎</td>
-            </tr>
-            <tr>
-                <th class="text-center bg-secondary text-light">メールアドレス</th>
-                <td>test@test.com</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">管理者フラグ</th>
@@ -35,16 +35,16 @@
                 <td>無効</td>
             </tr>
             <tr>
-                <th class="text-center bg-secondary text-light">作成日</th>
-                <td>YYYY/MM/DD</td>
+                <th class="text-center bg-secondary text-light">作成日時</th>
+                <td>1970-01-01 00:00:01.000000</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">作成者</th>
                 <td>浦島　太郎</td>
             </tr>
             <tr>
-                <th class="text-center bg-secondary text-light">最終更新日</th>
-                <td>YYYY/MM/DD</td>
+                <th class="text-center bg-secondary text-light">最終更新日時</th>
+                <td>1970-01-01 00:00:01.000000</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">最終更新者</th>
