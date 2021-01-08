@@ -5,7 +5,7 @@
     <h1 class="text-center">パスワード変更ページ</h1>
 
     <div class="m-4">
-        <form action="/password/change" method="post">
+        <form action="{{ route('password.change') }}" method="post">
             @csrf
 
             <div class="form-group row">
