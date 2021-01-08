@@ -27,7 +27,7 @@
         </table>
     </div>
 
-    <a href="/password/change" class="btn btn-warning col-12">パスワード変更</a>
+    <a href="{{ route('password.form') }}" class="btn btn-warning col-12">パスワード変更</a>
 
     <h2 class="text-center pt-5">自分の予約情報一覧</h2>
 
@@ -43,8 +43,8 @@
         @foreach ($reservations as $reservation)
 
             <tr>
-                <td class="text-center"><a href="/reservations/{{ $reservation->id }}">{{ $reservation->id }}</a></td>
-                <td class="text-center"><a href="/storages/{{ $reservation->storage_id }}">{{ $reservation->storage_id }}</a></td>
+                <td class="text-center"><a href="{{ route('reservations.show', $reservation->id) }}">{{ $reservation->id }}</a></td>
+                <td class="text-center"><a href="{{ route('reservations.show', $reservation->storage_id) }}">{{ $reservation->storage_id }}</a></td>
                 <td class="text-center">{{ $reservation->status }}</td>
                 <td class="text-center">{{ $reservation->start_date }}</td>
                 <td class="text-center">{{ $reservation->end_date }}</td>
