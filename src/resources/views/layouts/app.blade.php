@@ -62,8 +62,8 @@
                             <li class="nav-item dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ユーザー</a>
                                 <div class="dropdown-menu">
-                                    <a href="/users" class="dropdown-item">ユーザー一覧</a>
-                                    <a href="/users/create" class="dropdown-item">ユーザー新規作成</a>
+                                    <a href="{{ route('users.index') }}" class="dropdown-item">ユーザー一覧</a>
+                                    <a href="{{ route('users.create') }}" class="dropdown-item">ユーザー新規作成</a>
                                 </div>
                             </li>
 
@@ -75,9 +75,9 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">マイメニュー</a>
                         <div class="dropdown-menu">
-                            <a href="/mypage" class="dropdown-item">マイページ</a>
+                            <a href="{{ route('mypage') }}" class="dropdown-item">マイページ</a>
 
-                            <form action="/logout" method="post">
+                            <form action="{{ route('logout') }}" method="post">
                                 @csrf
                                 <input type="submit" value="ログアウト" class="dropdown-item">
                             </form>

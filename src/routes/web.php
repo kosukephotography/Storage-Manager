@@ -25,7 +25,7 @@ Route::group(['middleware' => ['auth']], function(){
     });
 
     // 認証済ユーザーに許可するルート
-    Route::get('/mypage', 'App\Http\Controllers\UsersController@mypage');
+    Route::get('/mypage', 'App\Http\Controllers\UsersController@mypage')->name('mypage');
     Route::get('/password/change', 'App\Http\Controllers\Auth\ChangePasswordController@showChangePasswordForm')->name('password.form');
     Route::post('/password/change', 'App\Http\Controllers\Auth\ChangePasswordController@ChangePassword')->name('password.change');
 
