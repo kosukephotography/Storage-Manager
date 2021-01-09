@@ -47,16 +47,10 @@
                 <button type="submit" class="btn btn-primary col-12">検索</button>
             </div>
         </form>
-        <form action="#" method="post">
-            @csrf
-            <div class="form-group row">
-                <input type="hidden" name="employee_number" value="{{$employee_number}}">
-                <input type="hidden" name="email" value="{{$email}}">
-                <input type="hidden" name="is_admin" value="{{$is_admin}}">
-                <input type="hidden" name="deleted_at" value="{{$deleted_at}}">
-                <button type="submit" class="btn btn-info col-12">検索結果をcsv出力</button>
-            </div>
-        </form>
+
+        <div class="row">
+            <a href="{{ route('users.csv') }}" class="btn btn-info col-12">全データをcsv出力</a>
+        </div>
 
     </div>
 

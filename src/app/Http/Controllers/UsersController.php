@@ -193,4 +193,64 @@ class UsersController extends Controller
             'deleted_at' => $deleted_at,
         ]);
     }
+
+    public function csv()
+    {
+        $headers = [ //ヘッダー情報
+            'Content-type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename=users.csv',
+            'Pragma' => 'no-cache',
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires' => '0',
+        ];
+
+        $callback = function() 
+        {
+            
+            $createCsvFile = fopen('php://output', 'w'); //ファイル作成
+            
+            $columns = [ //1行目の情報
+                'id',
+                'employee_number',
+                'family_name',
+                'first_name',
+                'email',
+                'is_admin',
+                'created_at',
+                'created_by',
+                'updated_at',
+                'updated_by',
+                'deleted_at',
+            ];
+
+            mb_convert_variables('SJIS-win', 'UTF-8', $columns); //文字化け対策
+    
+            fputcsv($createCsvFile, $columns); //1行目の情報を追記
+
+            $users = User::all();
+
+            foreach ($users as $user) {  //データを1行ずつ回す
+                $csv = [
+                    $user->id,  //オブジェクトなので -> で取得
+                    $user->employee_number,
+                    $user->family_name,
+                    $user->first_name,
+                    $user->email,
+                    $user->is_admin,
+                    $user->created_at,
+                    $user->created_by,
+                    $user->updated_at,
+                    $user->updated_by,
+                    $user->deleted_at,
+                ];
+
+                mb_convert_variables('SJIS-win', 'UTF-8', $csv); //文字化け対策
+
+                fputcsv($createCsvFile, $csv); //ファイルに追記する
+            }
+            fclose($createCsvFile); //ファイル閉じる
+        };
+        
+        return response()->stream($callback, 200, $headers); //ここで実行
+    }
 }
