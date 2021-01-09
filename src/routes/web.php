@@ -20,7 +20,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::group(['middleware' => ['can:admin-only']], function(){
         // 認証済かつ管理者のみ許可するルート
         Route::post('/users/search', 'App\Http\Controllers\UsersController@search')->name('users.search');
-        Route::resource('/users', 'App\Http\Controllers\UsersController');
+        Route::resource('/users', 'App\Http\Controllers\UsersController')->except(['destroy']);
         Route::resource('/opportunity_relations', 'App\Http\Controllers\OpportunityRelationsController');
     });
 

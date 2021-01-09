@@ -191,6 +191,6 @@ class UsersController extends Controller
             'email' => $email,
             'is_admin' => $is_admin,
             'deleted_at' => $deleted_at,
-            ]);
+        ]);
     }
 }
