@@ -17,8 +17,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'employee_number',
         'email',
+        'family_name',
+        'first_name',
+        'is_admin',
+        'created_by',
+        'updated_by',
         'password',
     ];
 
@@ -40,4 +45,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->family_name} {$this->first_name}";
+    }
+    public function createdByUser()
+    {
+        return $this->hasOne(\App\Models\User::class, 'id', 'created_by');
+    }
+    public function updatedByUser()
+    {
+        return $this->hasOne(\App\Models\User::class, 'id', 'updated_by');
+    }
 }

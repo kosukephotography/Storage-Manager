@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">作成者</th>
-                <td>{{ $created_by }}</td>
+                <td>{{ $user->createdByUser->full_name }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">最終更新日時</th>
@@ -48,7 +48,7 @@
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">最終更新者</th>
-                <td>{{ $updated_by }}</td>
+                <td>{{ $user->updatedByUser->full_name }}</td>
             </tr>
         </table>
     </div>

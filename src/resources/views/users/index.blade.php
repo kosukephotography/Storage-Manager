@@ -48,9 +48,16 @@
             </div>
         </form>
 
-        <div class="row">
-            <a href="{{ route('users.csv') }}" class="btn btn-info col-12">全データをcsv出力</a>
-        </div>
+        <form action="{{ route('users.csv') }}" method="post">
+            @csrf
+            <input type="hidden" name="employee_number" value="{{$employee_number}}">
+            <input type="hidden" name="email" value="{{$email}}">
+            <input type="hidden" name="is_admin" value="{{$is_admin}}">
+            <input type="hidden" name="deleted_at" value="{{$deleted_at}}">
+            <div class="form-group row">
+                <button type="submit" class="btn btn-info col-12">現在の検索結果をcsv出力</button>
+            </div>
+        </form>
 
     </div>
 
