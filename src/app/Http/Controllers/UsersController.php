@@ -52,23 +52,20 @@ class UsersController extends Controller
      */
     public function store(UsersStoreRequest $request)
     {
-        $now = \Carbon\Carbon::now();
-        $user = new User;
         $by_id = Auth::user()->id;
 
-        $user->employee_number = $request->employee_number;
-        $user->email = $request->email;
-        $user->family_name = $request->family_name;
-        $user->first_name = $request->first_name;
-        $user->is_admin = $request->is_admin;
-        $user->created_by = $by_id;
-        $user->updated_by = $by_id;
-        $user->password = bcrypt('secret');
-        $user->save();
+        $new_user = User::create([
+            'employee_number' => $request->employee_number,
+            'email' => $request->email,
+            'family_name' => $request->family_name,
+            'first_name' => $request->first_name,
+            'is_admin' => $request->is_admin,
+            'created_by' => $by_id,
+            'updated_by' => $by_id,
+            'password' => bcrypt('secret'),
+        ]);
 
-        $new_user_id = User::where('employee_number', $request->employee_number)->first();
-
-        return redirect()->route('users.show', $new_user_id)->with('information', 'レコードを作成しました。');
+        return redirect()->route('users.show', $new_user->id)->with('information', 'レコードを作成しました。');
     }
 
     /**
@@ -79,14 +76,10 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        $created_by = User::find($user->created_by)->family_name . ' ' . User::find($user->created_by)->first_name;
-        $updated_by = User::find($user->updated_by)->family_name . ' ' . User::find($user->updated_by)->first_name;
+        $user = User::with(['createdByUser', 'updatedByUser'])->find($id);
 
         return view('users.show', [
             'user' => $user,
-            'created_by' => $created_by,
-            'updated_by' => $updated_by,
         ]);
     }
 
@@ -99,7 +92,6 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-
 
         return view('users.edit', [
             'user' => $user,
@@ -119,18 +111,16 @@ class UsersController extends Controller
         $user = User::find($id);
         $by_id = Auth::user()->id;
 
-        $user->employee_number = $request->employee_number;
-        $user->email = $request->email;
-        $user->family_name = $request->family_name;
-        $user->first_name = $request->first_name;
-        $user->is_admin = $request->is_admin;
-        $user->updated_by = $by_id;
-        if ($request->deleted_at == 1) {
-            $user->deleted_at = $now;
-        } elseif ($request->deleted_at == 0) {
-            $user->deleted_at = null;
-        }
-        $user->save();
+        $user->fill([
+            'employee_number' => $request->employee_number,
+            'email' => $request->email,
+            'family_name' => $request->family_name,
+            'first_name' => $request->first_name,
+            'is_admin' => $request->is_admin,
+            'updated_by' => $by_id,
+            'deleted_at' => $request->deleted_at ? $now : null,
+        ])
+        ->save();
 
         return redirect()->route('users.show', $user->id)->with('information', 'レコードを更新しました。');
     }
@@ -159,12 +149,12 @@ class UsersController extends Controller
 
     public function search(Request $request)
     {
-        $query = User::query();
-
         $employee_number = $request->employee_number;
         $email = $request->email;
         $is_admin = $request->is_admin;
         $deleted_at = $request->deleted_at;
+
+        $query = User::query();
 
         if(isset($employee_number)) {
             $query->where('employee_number', 'like', '%' . $employee_number . '%');
@@ -194,9 +184,10 @@ class UsersController extends Controller
         ]);
     }
 
-    public function csv()
+    public function csv(Request $request)
     {
-        $headers = [ //ヘッダー情報
+        // ヘッダー生成
+        $headers = [
             'Content-type' => 'text/csv',
             'Content-Disposition' => 'attachment; filename=users.csv',
             'Pragma' => 'no-cache',
@@ -204,9 +195,37 @@ class UsersController extends Controller
             'Expires' => '0',
         ];
 
-        $callback = function() 
+        // データ取得＆生成
+        $query = User::query();
+
+        $employee_number = $request->employee_number;
+        $email = $request->email;
+        $is_admin = $request->is_admin;
+        $deleted_at = $request->deleted_at;
+
+        if(isset($employee_number)) {
+            $query->where('employee_number', 'like', '%' . $employee_number . '%');
+        }
+        if(isset($email)) {
+            $query->where('email', 'like', '%' . $email . '%');
+        }
+        if(isset($is_admin)) {
+            $query->where('is_admin', $is_admin);
+        }
+        if(isset($deleted_at)) {
+            if($deleted_at == 1) {
+                $query->whereNotNull('deleted_at');
+            } elseif ($deleted_at == 0) {
+                $query->whereNull('deleted_at');
+            }
+        }
+
+        $users = $query->get();
+
+        $this->users = $users;
+
+        $callback = function()
         {
-            
             $createCsvFile = fopen('php://output', 'w'); //ファイル作成
             
             $columns = [ //1行目の情報
@@ -227,7 +246,7 @@ class UsersController extends Controller
     
             fputcsv($createCsvFile, $columns); //1行目の情報を追記
 
-            $users = User::all();
+            $users = $this->users;
 
             foreach ($users as $user) {  //データを1行ずつ回す
                 $csv = [
@@ -251,6 +270,6 @@ class UsersController extends Controller
             fclose($createCsvFile); //ファイル閉じる
         };
         
-        return response()->stream($callback, 200, $headers); //ここで実行
+        return response()->stream($callback, 200, $headers);
     }
 }

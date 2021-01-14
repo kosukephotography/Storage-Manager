@@ -24,7 +24,7 @@ class UsersStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'employee_number' => ['required' , 'integer'],
+            'employee_number' => ['required' , 'string'],
             'email' => ['required' , 'email:rfc'],
             'family_name' => ['required' , 'string'],
             'first_name' => ['required' , 'string'],
