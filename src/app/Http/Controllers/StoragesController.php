@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Storage;
+use App\Models\Opportunity_relation;
 
 class StoragesController extends Controller
 {
@@ -13,7 +15,11 @@ class StoragesController extends Controller
      */
     public function index()
     {
-        return view('storages.index');
+        $storages = Storage::with('opportunityRelations')->get();
+
+        return view('storages.index', [
+            'storages' => $storages,
+        ]);
     }
 
     /**

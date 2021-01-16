@@ -16,13 +16,14 @@ class StoragesTableSeeder extends Seeder
     {
         $now = \Carbon\Carbon::now();
 
-        for($i = 1; $i <= 10; $i++) {
+        for($i = 1; $i <= 5; $i++) {
             DB::table('storages')->insert([
                 'created_at' => $now,
                 'updated_at' => $now,
                 'maker' => 'メーカー' . $i,
                 'model_number' => 'モデルナンバー' . $i,
                 'serial_number' => 'シリアルナンバー' . $i,
+                'size' => '2TB',
                 'types' => 'レンタル',
                 'supported_os' => 'Windows',
                 'recovery_key' => '回復キー' . $i,
@@ -31,5 +32,49 @@ class StoragesTableSeeder extends Seeder
                 'updated_by' => '1'
             ]);
         }
+
+        DB::table('storages')->insert([
+            'created_at' => $now,
+            'updated_at' => $now,
+            'maker' => 'BUFFALO',
+            'model_number' => 'モデルナンバー',
+            'serial_number' => 'シリアルナンバー99',
+            'size' => '4TB',
+            'types' => 'レンタル',
+            'supported_os' => 'Windows',
+            'recovery_key' => '回復キー',
+            'password' => 'パスワード',
+            'created_by' => '1',
+            'updated_by' => '1'
+        ]);
+        DB::table('storages')->insert([
+            'created_at' => $now,
+            'updated_at' => $now,
+            'maker' => 'BUFFALO',
+            'model_number' => 'モデルナンバー',
+            'serial_number' => 'シリアルナンバー98',
+            'size' => '500GB',
+            'types' => 'レンタル',
+            'supported_os' => 'Windows',
+            'recovery_key' => '回復キー',
+            'password' => 'パスワード',
+            'created_by' => '1',
+            'updated_by' => '1'
+        ]);
+        DB::table('storages')->insert([
+            'created_at' => $now,
+            'updated_at' => $now,
+            'maker' => 'BUFFALO',
+            'model_number' => 'モデルナンバー',
+            'serial_number' => 'シリアルナンバー97',
+            'size' => '500GB',
+            'types' => 'レンタル',
+            'supported_os' => 'Windows',
+            'recovery_key' => '回復キー',
+            'password' => 'パスワード',
+            'created_by' => '1',
+            'updated_by' => '1',
+            'deleted_at' => $now
+        ]);
     }
 }

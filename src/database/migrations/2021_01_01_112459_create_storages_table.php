@@ -19,6 +19,7 @@ class CreateStoragesTable extends Migration
             $table->string('maker', 20);
             $table->string('model_number', 30);
             $table->string('serial_number', 30)->unique();
+            $table->string('size', 10);
             $table->enum('types', ['レンタル', 'ライブラリ']);
             $table->enum('supported_os', ['Windows', 'mac']);
             $table->string('recovery_key', 48);
