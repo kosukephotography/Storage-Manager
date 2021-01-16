@@ -21,7 +21,7 @@ class OpportunityRelationsTableSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now,
                 'storage_id' => '1',
-                'opportunity_id' => 'PR123456',
+                'opportunity_id' => 'PR12345' . $i,
                 'created_by' => '1',
                 'updated_by' => '1'
             ]);

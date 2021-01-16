@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Storage extends Model
 {
     use HasFactory;
+
+    public function opportunityRelations() {
+        return $this->hasMany(\App\Models\OpportunityRelation::class);
+    }
 }

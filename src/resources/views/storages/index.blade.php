@@ -82,30 +82,24 @@
             <th class="text-center">関連案件ID</th>
         </tr>
 
-        @for ($i = 0; $i < 10; $i++)
+        @foreach ($storages as $storage)
             <tr>
-                <td class="text-center"><a href="/storages/{{$i}}">ST00000{{$i}}</a></td>
-                <td class="text-center">2TB</td>
-                <td class="text-center">レンタル</td>
-                <td class="text-center">Windows</td>
-                <td class="text-center">無効</td>
-                <td class="text-center"></td>
+                <td class="text-center"><a href="{{ route('storages.show', $storage->id) }}">{{$storage->id}}</a></td>
+                <td class="text-center">{{$storage->size}}</td>
+                <td class="text-center">{{$storage->types}}</td>
+                <td class="text-center">{{$storage->supported_os}}</td>
+                <td class="text-center">{{ empty($storage->deleted_at) ? '' : 'Yes' }}</td>
+                <td class="text-center">
+                    @if (!empty($storage->opportunityRelations))
+                        <ul>
+                            @foreach ($storage->opportunityRelations as $opportunityRelation)
+                                <li class="text-left">{{ $opportunityRelation->opportunity_id }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </td>
             </tr>
-        @endfor
-
-        <tr>
-            <td class="text-center"><a href="/storages/{{$i}}">ST000010</a></td>
-            <td class="text-center">4TB</td>
-            <td class="text-center">ライブラリ</td>
-            <td class="text-center">Mac</td>
-            <td class="text-center">無効</td>
-            <td class="text-center">
-                <ul>
-                    <li>PR123456789</li>
-                    <li>PR123456789</li>
-                </ul>
-            </td>
-        </tr>
+        @endforeach
 
     </table>
 

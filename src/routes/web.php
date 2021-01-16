@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\StoragesController;
+use App\Http\Controllers\Auth\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,19 +22,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['auth']], function(){
     Route::group(['middleware' => ['can:admin-only']], function(){
         // 認証済かつ管理者のみ許可するルート
-        Route::post('/users/csv', 'App\Http\Controllers\UsersController@csv')->name('users.csv');
-        Route::post('/users/search', 'App\Http\Controllers\UsersController@search')->name('users.search');
-        Route::resource('/users', 'App\Http\Controllers\UsersController')->except(['destroy']);
-        Route::resource('/opportunity_relations', 'App\Http\Controllers\OpportunityRelationsController');
+        Route::post('/users/csv', [UsersController::class, 'csv'])->name('users.csv');
+        Route::post('/users/search', [UsersController::class, 'search'])->name('users.search');
+        Route::resource('/users', UsersController::class)->except(['destroy']);
+        Route::resource('/storages', StoragesController::class)->except(['destroy']);
     });
-
+    
     // 認証済ユーザーに許可するルート
-    Route::get('/mypage', 'App\Http\Controllers\UsersController@mypage')->name('mypage');
-    Route::get('/password/change', 'App\Http\Controllers\Auth\ChangePasswordController@showChangePasswordForm')->name('password.form');
-    Route::post('/password/change', 'App\Http\Controllers\Auth\ChangePasswordController@ChangePassword')->name('password.change');
-
+    Route::resource('/storages', StoragesController::class)->only(['index', 'show']);
+    Route::get('/mypage', [UsersController::class, 'mypage'])->name('mypage');
+    Route::get('/password/change', [ChangePasswordController::class, 'showChangePasswordForm'])->name('password.form');
+    Route::post('/password/change', [ChangePasswordController::class, 'ChangePassword'])->name('password.change');
+    
     // 未開発の保留ルート
-    Route::resource('/storages', 'App\Http\Controllers\StoragesController');
+    Route::resource('/opportunity_relations', 'App\Http\Controllers\OpportunityRelationsController');
     Route::resource('/reservations', 'App\Http\Controllers\ReservationsController');
     Route::get('/dashboard', 'App\Http\Controllers\ReservationsController@dashboard');
     Route::get('/', 'App\Http\Controllers\ReservationsController@dashboard');
