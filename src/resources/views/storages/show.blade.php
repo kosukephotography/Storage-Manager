@@ -2,96 +2,89 @@
 
 @section('content')
 
-    <h1 class="text-center">ID = N のストレージ詳細ページ</h1>
+    <h1 class="text-center">ID = {{ $storage->id }} のストレージ詳細ページ</h1>
 
     <div class="m-4">
         <table class="table table-bordered">
             <tr>
                 <th class="text-center bg-secondary text-light">ID</th>
-                <td>N</td>
-            </tr>
-            <tr>
-                <th class="text-center bg-secondary text-light">ストレージID</th>
-                <td>ST000001</td>
-            </tr>
-            <tr>
-                <th class="text-center bg-secondary text-light">容量</th>
-                <td>2TB</td>
+                <td>{{ $storage->id }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">メーカー</th>
-                <td>BUFFALO</td>
+                <td>{{ $storage->maker }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">型番</th>
-                <td>SO505i</td>
+                <td>{{ $storage->model_number }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">シリアルナンバー</th>
-                <td>SN12345678</td>
+                <td>{{ $storage->serial_number }}</td>
+            </tr>
+            <tr>
+                <th class="text-center bg-secondary text-light">容量</th>
+                <td>{{ $storage->size }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">種別</th>
-                <td>ライブラリ</td>
+                <td>{{ $storage->types }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">対応OS</th>
-                <td>Mac</td>
+                <td>{{ $storage->supported_os }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">復旧キー</th>
-                <td>qwertyuiopasdfghjkl</td>
+                <td>{{ $storage->recovery_key }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">パスワード</th>
-                <td>1qaz2wsx</td>
+                <td>{{ $storage->password }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">抹消フラグ</th>
-                <td>無効</td>
+                <td>{{ $storage->deleted_at }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">抹消理由</th>
-                <td>おはようございますこんにちはこんばんはほげほげ</td>
+                <td>{{ $storage->reason }}</td>
+            </tr>
+            <tr>
+                <th class="text-center bg-secondary text-light">作成日</th>
+                <td>{{ $storage->created_at }}</td>
+            </tr>
+            <tr>
+                <th class="text-center bg-secondary text-light">作成者</th>
+                <td>{{ $storage->createdByUser->full_name }}</td>
+            </tr>
+            <tr>
+                <th class="text-center bg-secondary text-light">最終更新日</th>
+                <td>{{ $storage->updated_at }}</td>
+            </tr>
+            <tr>
+                <th class="text-center bg-secondary text-light">最終更新者</th>
+                <td>{{ $storage->updatedByUser->full_name }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">関連案件ID</th>
                 <td>
-                    <ul>
-                        <li>PR123456789</li>
-                        <li>PR123456789</li>
-                    </ul>
+                    @foreach ($storage->opportunityRelations as $opportunityRelation)
+                        @if ($loop->first)
+                            <ul>
+                        @endif
+                        <li class="text-left">{{ $opportunityRelation->opportunity_id }}</li>
+                        @if ($loop->last)
+                            </ul>
+                        @endif
+                    @endforeach
                 </td>
-            </tr>
-            <tr>
-                <th class="text-center bg-secondary text-light">作成日</th>
-                <td>1970-01-01 00:00:01.000000</td>
-            </tr>
-            <tr>
-                <th class="text-center bg-secondary text-light">作成者</th>
-                <td>浦島　太郎</td>
-            </tr>
-            <tr>
-                <th class="text-center bg-secondary text-light">最終更新日</th>
-                <td>1970-01-01 00:00:01.000000</td>
-            </tr>
-            <tr>
-                <th class="text-center bg-secondary text-light">最終更新者</th>
-                <td>浦島　太郎</td>
-            </tr>
-            <tr>
-                <th class="text-center bg-secondary text-light">現在の利用者</th>
-                <td>浦島　太郎</td>
             </tr>
         </table>
     </div>
 
     <div class="m-4">
-        <form action="/storages/0/edit" method="get">
-            <div class="form-group row">
-                <button type="submit" class="btn btn-primary col-12">編集</button>
-            </div>
-        </form>
+        <a href="{{ route('storages.edit', $storage->id) }}" class="btn btn-primary col-12">編集</a>
     </div>
 
 @endsection
