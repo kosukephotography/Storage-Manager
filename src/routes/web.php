@@ -25,9 +25,11 @@ Route::group(['middleware' => ['auth']], function(){
         Route::post('/users/csv', [UsersController::class, 'csv'])->name('users.csv');
         Route::post('/users/search', [UsersController::class, 'search'])->name('users.search');
         Route::resource('/users', UsersController::class)->except(['destroy']);
+        Route::post('/storages/csv', [StoragesController::class, 'csv'])->name('storages.csv');
+        Route::post('/storages/search', [StoragesController::class, 'search'])->name('storages.search');
         Route::resource('/storages', StoragesController::class)->except(['destroy']);
     });
-    
+
     // 認証済ユーザーに許可するルート
     Route::resource('/storages', StoragesController::class)->only(['index', 'show']);
     Route::get('/mypage', [UsersController::class, 'mypage'])->name('mypage');
@@ -39,7 +41,4 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('/reservations', 'App\Http\Controllers\ReservationsController');
     Route::get('/dashboard', 'App\Http\Controllers\ReservationsController@dashboard');
     Route::get('/', 'App\Http\Controllers\ReservationsController@dashboard');
-
 });
-
-

@@ -20,7 +20,7 @@ class OpportunityRelationsTableSeeder extends Seeder
             DB::table('opportunity_relations')->insert([
                 'created_at' => $now,
                 'updated_at' => $now,
-                'storage_id' => '1',
+                'storage_id' => '6',
                 'opportunity_id' => 'PR12345' . $i,
                 'created_by' => '1',
                 'updated_by' => '1'
