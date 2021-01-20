@@ -27,11 +27,11 @@ Route::group(['middleware' => ['auth']], function(){
         Route::post('users/csv', [UsersController::class, 'csv'])->name('users.csv');
         Route::post('users/search', [UsersController::class, 'search'])->name('users.search');
         Route::get('users', [UsersController::class, 'index'])->name('users.index');
-        Route::get('users/{id}', [UsersController::class, 'show'])->name('users.show');
-        Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
         Route::post('users', [UsersController::class, 'store'])->name('users.store');
-        Route::get('users/{id}/edit', [UsersController::class, 'edit'])->name('users.edit');
+        Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
+        Route::get('users/{id}', [UsersController::class, 'show'])->name('users.show');
         Route::put('users/{id}', [UsersController::class, 'update'])->name('users.update');
+        Route::get('users/{id}/edit', [UsersController::class, 'edit'])->name('users.edit');
 
         //// Storages関連
 
