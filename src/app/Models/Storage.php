@@ -21,6 +21,7 @@ class Storage extends Model
         'deleted_at',
         'reason',
         'updated_by',
+        'created_by',
 ];
 
     public function opportunityRelations() {

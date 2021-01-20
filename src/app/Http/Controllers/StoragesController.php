@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Storage;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoragesStoreRequest;
 
 class StoragesController extends Controller
 {
@@ -47,9 +48,26 @@ class StoragesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoragesStoreRequest $request)
     {
-        //
+        $by_id = Auth::user()->id;
+
+        $new_storage = Storage::create([
+            'maker' => $request->maker,
+            'model_number' => $request->model_number,
+            'serial_number' => $request->serial_number,
+            'size' => $request->size,
+            'types' => $request->types,
+            'supported_os' => $request->supported_os,
+            'recovery_key' => $request->recovery_key,
+            'password' => $request->password,
+            'deleted_at' => $request->deleted_at ? $now : null,
+            'reason' => $request->reason,
+            'updated_by' => $by_id,
+            'created_by' => $by_id,
+        ]);
+
+        return redirect()->route('storages.show', $new_storage->id)->with('information', 'レコードを作成しました。');
     }
 
     /**
