@@ -17,7 +17,7 @@ class Storage extends Model
         'types',
         'supported_os',
         'recovery_key',
-        'password',
+        'storage_password',
         'deleted_at',
         'reason',
         'updated_by',

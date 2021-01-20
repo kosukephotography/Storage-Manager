@@ -23,7 +23,7 @@ class CreateStoragesTable extends Migration
             $table->enum('types', ['レンタル', 'ライブラリ']);
             $table->enum('supported_os', ['Windows', 'Mac']);
             $table->string('recovery_key', 48);
-            $table->string('password', 48);
+            $table->string('storage_password', 48);
             $table->softDeletes();
             $table->text('reason')->nullable();
             $table->foreignId('created_by')->constrained('users');

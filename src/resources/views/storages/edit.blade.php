@@ -65,10 +65,10 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-2 col-form-label" for="password">パスワード
+                <label class="col-2 col-form-label" for="storage_password">パスワード
 </label>
                 <div class="col-10">
-                    <input type="text" class="form-control" name="password" value="{{ $storage->password }}" id="password">
+                    <input type="text" class="form-control" name="storage_password" value="{{ $storage->storage_password }}" id="storage_password">
                 </div>
             </div>
 

@@ -27,7 +27,7 @@ class StoragesTableSeeder extends Seeder
                 'types' => 'レンタル',
                 'supported_os' => 'Windows',
                 'recovery_key' => '回復キー' . $i,
-                'password' => 'パスワード' . $i,
+                'storage_password' => 'パスワード' . $i,
                 'created_by' => '1',
                 'updated_by' => '1'
             ]);
@@ -43,7 +43,7 @@ class StoragesTableSeeder extends Seeder
             'types' => 'ライブラリ',
             'supported_os' => 'Mac',
             'recovery_key' => '回復キー',
-            'password' => 'パスワード',
+            'storage_password' => 'パスワード',
             'created_by' => '1',
             'updated_by' => '1'
         ]);
@@ -57,7 +57,7 @@ class StoragesTableSeeder extends Seeder
             'types' => 'レンタル',
             'supported_os' => 'Mac',
             'recovery_key' => '回復キー',
-            'password' => 'パスワード',
+            'storage_password' => 'パスワード',
             'created_by' => '1',
             'updated_by' => '1'
         ]);
@@ -71,7 +71,7 @@ class StoragesTableSeeder extends Seeder
             'types' => 'レンタル',
             'supported_os' => 'Windows',
             'recovery_key' => '回復キー',
-            'password' => 'パスワード',
+            'storage_password' => 'パスワード',
             'created_by' => '1',
             'updated_by' => '1',
             'deleted_at' => $now

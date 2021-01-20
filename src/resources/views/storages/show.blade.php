@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">パスワード</th>
-                <td>{{ $storage->password }}</td>
+                <td>{{ $storage->storage_password }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">抹消フラグ</th>

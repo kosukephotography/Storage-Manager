@@ -31,8 +31,7 @@ class StoragesUpdateRequest extends FormRequest
             'types' => ['required' , 'in:レンタル,ライブラリ'],
             'supported_os' => ['required' , 'in:Windows,Mac'],
             'recovery_key' => ['required' , 'string'],
-            'password' => ['required' , 'string'],
-            'password' => ['required' , 'string'],
+            'storage_password' => ['required' , 'string'],
             'deleted_at' => ['required' , 'boolean'],
         ];
     }
