@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoragesStoreRequest;
+use App\Http\Requests\StoragesUpdateRequest;
 
 class StoragesController extends Controller
 {
@@ -107,7 +108,7 @@ class StoragesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoragesUpdateRequest $request, $id)
     {
         $now = \Carbon\Carbon::now();
         $storage = Storage::find($id);
