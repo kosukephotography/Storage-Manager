@@ -51,16 +51,19 @@
                 <button type="submit" class="btn btn-primary col-12">検索</button>
             </div>
         </form>
-        <form action="{{ route('storages.csv') }}" method="post">
-            @csrf
-            <input type="hidden" name="size" value="{{$size}}">
-            <input type="hidden" name="types" value="{{$types}}">
-            <input type="hidden" name="supported_os" value="{{$supported_os}}">
-            <input type="hidden" name="deleted_at" value="{{$deleted_at}}">
-            <div class="form-group row">
-                <button type="submit" class="btn btn-info col-12">検索結果をcsv出力</button>
-            </div>
-        </form>
+
+        @if(Auth::user()->is_admin == 1)
+            <form action="{{ route('storages.csv') }}" method="post">
+                @csrf
+                <input type="hidden" name="size" value="{{$size}}">
+                <input type="hidden" name="types" value="{{$types}}">
+                <input type="hidden" name="supported_os" value="{{$supported_os}}">
+                <input type="hidden" name="deleted_at" value="{{$deleted_at}}">
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-info col-12">検索結果をcsv出力</button>
+                </div>
+            </form>
+        @endif
 
     </div>
 
