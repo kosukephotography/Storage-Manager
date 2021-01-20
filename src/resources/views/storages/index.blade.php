@@ -75,7 +75,7 @@
 
         @foreach ($storages as $storage)
             <tr>
-                <td class="text-center"><a href="{{ route('storages.show', $storage->id) }}">{{$storage->id}}</a></td>
+                <td class="text-center"><a href="{{ route('storages.show', ['id' => $storage->id]) }}">{{$storage->id}}</a></td>
                 <td class="text-center">{{$storage->size}}</td>
                 <td class="text-center">{{$storage->types}}</td>
                 <td class="text-center">{{$storage->supported_os}}</td>

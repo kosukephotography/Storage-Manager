@@ -54,7 +54,7 @@
     </div>
 
     <div class="m-4">
-        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary col-12">編集</a>
+        <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-primary col-12">編集</a>
     </div>
 
 @endsection

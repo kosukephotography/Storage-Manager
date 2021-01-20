@@ -5,8 +5,8 @@
     <h1 class="text-center">ID = {{ $storage->id }} のストレージ編集ページ</h1>
 
     <div class="m-4">
-        <form action="{{ route('storages.update', $storage->id) }}" method="post">
-            @method('PATCH')
+        <form action="{{ route('storages.update', ['id' => $storage->id]) }}" method="post">
+            @method('PUT')
             @csrf
             <div class="form-group row">
                 <label class="col-2 col-form-label" for="maker">メーカー</label>
@@ -95,7 +95,7 @@
         </form>
 
         <div class="row">
-            <a href="{{ route('storages.show', $storage->id) }}" class="btn btn-info col-12">戻る</a>
+            <a href="{{ route('storages.show', ['id' => $storage->id]) }}" class="btn btn-info col-12">戻る</a>
         </div>
 
     </div>

@@ -5,7 +5,7 @@
     <h1 class="text-center">ID = {{ $user->id }} のユーザー編集ページ</h1>
 
     <div class="m-4">
-        <form action="{{ route('users.update', $user->id) }}" method="post">
+        <form action="{{ route('users.update', ['id' => $user->id]) }}" method="post">
             @method('PUT')
             @csrf
             <div class="form-group row">
@@ -62,7 +62,7 @@
         </form>
 
         <div class="row">
-            <a href="{{ route('users.show', $user->id) }}" class="btn btn-info col-12">戻る</a>
+            <a href="{{ route('users.show', ['id' => $user->id]) }}" class="btn btn-info col-12">戻る</a>
         </div>
     </div>
 

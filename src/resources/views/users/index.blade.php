@@ -73,7 +73,7 @@
 
         @foreach ($users as $user)
             <tr>
-                <td class="text-center"><a href="{{ route('users.show', $user->id) }}">{{$user->id}}</a></td>
+                <td class="text-center"><a href="{{ route('users.show', ['id' =>$user->id]) }}">{{$user->id}}</a></td>
                 <td class="text-center">{{$user->employee_number}}</td>
                 <td class="text-center">{{$user->family_name}} {{$user->first_name}}</td>
                 <td class="text-center">{{$user->email}}</td>

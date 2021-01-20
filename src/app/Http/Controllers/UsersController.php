@@ -76,7 +76,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = User::with(['createdByUser', 'updatedByUser'])->find($id);
+        $user = User::with(['createdByUser', 'updatedByUser'])->findOrFail($id);
 
         return view('users.show', [
             'user' => $user,

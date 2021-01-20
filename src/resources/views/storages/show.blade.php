@@ -84,7 +84,7 @@
     </div>
 
     <div class="m-4">
-        <a href="{{ route('storages.edit', $storage->id) }}" class="btn btn-primary col-12">編集</a>
+        <a href="{{ route('storages.edit', ['id' => $storage->id]) }}" class="btn btn-primary col-12">編集</a>
     </div>
 
 @endsection

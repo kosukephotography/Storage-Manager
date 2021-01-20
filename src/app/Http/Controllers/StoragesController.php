@@ -78,7 +78,7 @@ class StoragesController extends Controller
      */
     public function show($id)
     {
-        $storage = Storage::with('opportunityRelations')->find($id);
+        $storage = Storage::with('opportunityRelations')->findOrFail($id);
 
         return view('storages.show', [
             'storage' => $storage,
@@ -184,7 +184,7 @@ class StoragesController extends Controller
         // ヘッダー生成
         $headers = [
             'Content-type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename=users.csv',
+            'Content-Disposition' => 'attachment; filename=storages.csv',
             'Pragma' => 'no-cache',
             'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
             'Expires' => '0',
