@@ -6,7 +6,7 @@
 
     <div class="m-4">
         <form action="{{ route('users.update', $user->id) }}" method="post">
-            @method('PATCH')
+            @method('PUT')
             @csrf
             <div class="form-group row">
                 <label class="col-2 col-form-label" for="employee_number">社員番号</label>
