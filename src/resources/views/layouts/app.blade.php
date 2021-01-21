@@ -44,18 +44,18 @@
                         </div>
                     </li>
 
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">関連案件情報</a>
+                        <div class="dropdown-menu">
+                            <a href="/opportunity_relations" class="dropdown-item">関連案件情報一覧</a>
+                            <a href="/opportunity_relations/create" class="dropdown-item">関連案件情報新規作成</a>
+                        </div>
+                    </li>
+
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">予約</a>
                             <div class="dropdown-menu">
                                 <a href="/reservations" class="dropdown-item">予約一覧</a>
-                            </div>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">関連案件情報</a>
-                            <div class="dropdown-menu">
-                                <a href="/opportunity_relations" class="dropdown-item">関連案件情報一覧</a>
-                                <a href="/opportunity_relations/create" class="dropdown-item">関連案件情報新規作成</a>
                             </div>
                         </li>
 

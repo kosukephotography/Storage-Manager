@@ -44,7 +44,7 @@ Route::group(['middleware' => ['auth']], function(){
         });
 
         Route::prefix('/opportunity_relations')->name('opportunity_relations.')->group(function () {
-            Route::post('csv', [OpportunityRelationsController::class, 'csv'])->name('csv');
+            Route::post('/csv', [OpportunityRelationsController::class, 'csv'])->name('csv');
             Route::post('/search', [OpportunityRelationsController::class, 'search'])->name('search');
             Route::get('', [OpportunityRelationsController::class, 'index'])->name('index');
             Route::post('', [OpportunityRelationsController::class, 'store'])->name('store');

@@ -76,5 +76,19 @@ class StoragesTableSeeder extends Seeder
             'updated_by' => '1',
             'deleted_at' => $now
         ]);
+        DB::table('storages')->insert([
+            'created_at' => $now,
+            'updated_at' => $now,
+            'maker' => 'BUFFALO',
+            'model_number' => 'モデルナンバー',
+            'serial_number' => 'シリアルナンバー96',
+            'size' => '4TB',
+            'types' => 'ライブラリ',
+            'supported_os' => 'Mac',
+            'recovery_key' => '回復キー',
+            'storage_password' => 'パスワード',
+            'created_by' => '1',
+            'updated_by' => '1'
+        ]);
     }
 }

@@ -2,29 +2,33 @@
 
 @section('content')
 
+    <h1 class="text-center">関連案件情報 一覧ページ</h1>
+
+
     <div class="m-4">
-        <form>
+        <form action="{{ route('opportunity_relations.search') }}" method="post">
+            @csrf
             <div class="form-group row">
-                <label class="col-2 col-form-label">ストレージID</label>
+                <label class="col-2 col-form-label" for="storage_id">ストレージID</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" name="">
+                    <input type="text" class="form-control" name="storage_id" id="storage_id" value="{{ $storage_id }}">
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-2 col-form-label">SF案件ID</label>
+                <label class="col-2 col-form-label" for="opportunity_id">SF案件ID</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" name="">
+                    <input type="text" class="form-control" name="opportunity_id" id="opportunity_id" value="{{ $opportunity_id }}">
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-2 col-form-label">無効化フラグ</label>
+                <label class="col-2 col-form-label" for="deleted_at">抹消フラグ</label>
                 <div class="col-10">
-                    <select class="form-control">
-                        <option>どちらも</option>
-                        <option>無効</option>
-                        <option>有効</option>
+                    <select class="form-control" name="deleted_at" id="deleted_at">
+                        <option></option>
+                        <option value="1" {{ $deleted_at === '1' ? 'selected' : '' }}>Yes</option>
+                        <option value="0" {{ $deleted_at === '0' ? 'selected' : '' }}>No</option>
                     </select>
                 </div>
             </div>
@@ -50,14 +54,14 @@
                 <th class="text-center">無効化フラグ</th>
             </tr>
 
-            @for ($i = 0; $i < 25; $i++)
+            @foreach ($opportunity_relations as $opportunity_relation)
                 <tr>
-                    <td class="text-center"><a href="/opportunity_relations/0">{{$i}}</a></td>
-                    <td class="text-center">ST000001</td>
-                    <td class="text-center">PR123456</td>
-                    <td class="text-center">無効</td>
+                    <td class="text-center"><a href="{{ route('opportunity_relations.show', ['id' => $opportunity_relation->id]) }}">{{$opportunity_relation->id}}</a></td>
+                    <td class="text-center"><a href="{{ route('storages.show', ['id' => $opportunity_relation->storage_id]) }}">{{$opportunity_relation->storage_id}}</a></td>
+                    <td class="text-center">{{$opportunity_relation->opportunity_id}}</td>
+                    <td class="text-center">{{ empty($opportunity_relation->deleted_at) ? '' : 'Yes' }}</td>
                 </tr>
-            @endfor
+            @endforeach
 
         </table>
 
