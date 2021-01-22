@@ -2,55 +2,47 @@
 
 @section('content')
 
-    <h1 class="text-center">ID = N の関連案件情報 詳細ページ</h1>
+    <h1 class="text-center">ID = {{ $opportunity_relations->id }} の関連案件情報 詳細ページ</h1>
 
     <div class="m-4">
         <table class="table table-bordered">
             <tr>
                 <th class="text-center bg-secondary text-light">ID</th>
-                <td>N</td>
+                <td>{{ $opportunity_relations->id }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">ストレージID</th>
-                <td>ST000001</td>
+                <td>{{ $opportunity_relations->storage_id }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">SF案件ID</th>
-                <td>PR123456</td>
+                <td>{{ $opportunity_relations->opportunity_id }}</td>
             </tr>
             <tr>
-                <th class="text-center bg-secondary text-light">無効化フラグ</th>
-                <td>無効</td>
+                <th class="text-center bg-secondary text-light">抹消フラグ</th>
+                <td>{{ $opportunity_relations->deleted_at }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">作成日時</th>
-                <td>1970-01-01 00:00:01.000000</td>
+                <td>{{ $opportunity_relations->created_at }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">作成者</th>
-                <td>浦島　太郎</td>
+                <td>{{ $opportunity_relations->createdByUser->full_name }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">最終更新日時</th>
-                <td>1970-01-01 00:00:01.000000</td>
+                <td>{{ $opportunity_relations->updated_at }}</td>
             </tr>
             <tr>
                 <th class="text-center bg-secondary text-light">最終更新者</th>
-                <td>浦島　太郎</td>
+                <td>{{ $opportunity_relations->updatedByUser->full_name }}</td>
             </tr>
         </table>
     </div>
 
-
-
-
-
     <div class="m-4">
-        <form action="/opportunity_relations/0/edit" method="get">
-            <div class="form-group row">
-                <button type="submit" class="btn btn-primary col-12">編集</button>
-            </div>
-        </form>
+        <a href="{{ route('opportunity_relations.edit', ['id' => $opportunity_relations->id]) }}" class="btn btn-primary col-12">編集</a>
     </div>
 
 @endsection

@@ -37,11 +37,17 @@
                 <button type="submit" class="btn btn-primary col-12">検索</button>
             </div>
         </form>
-        <form>
-        <div class="form-group row">
+
+        <form action="{{ route('opportunity_relations.csv') }}" method="post">
+            @csrf
+            <input type="hidden" name="storage_id" value="{{$storage_id}}">
+            <input type="hidden" name="opportunity_id" value="{{$opportunity_id}}">
+            <input type="hidden" name="deleted_at" value="{{$deleted_at}}">
+            <div class="form-group row">
                 <button type="submit" class="btn btn-info col-12">検索結果をcsv出力</button>
             </div>
         </form>
+
     </div>
 
 
@@ -51,7 +57,7 @@
                 <th class="text-center">ID</th>
                 <th class="text-center">ストレージID</th>
                 <th class="text-center">SF案件ID</th>
-                <th class="text-center">無効化フラグ</th>
+                <th class="text-center">抹消フラグ</th>
             </tr>
 
             @foreach ($opportunity_relations as $opportunity_relation)

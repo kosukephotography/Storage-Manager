@@ -55,7 +55,7 @@
             <input type="hidden" name="is_admin" value="{{$is_admin}}">
             <input type="hidden" name="deleted_at" value="{{$deleted_at}}">
             <div class="form-group row">
-                <button type="submit" class="btn btn-info col-12">現在の検索結果をcsv出力</button>
+                <button type="submit" class="btn btn-info col-12">検索結果をcsv出力</button>
             </div>
         </form>
 

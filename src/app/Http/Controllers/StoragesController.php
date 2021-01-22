@@ -143,38 +143,30 @@ class StoragesController extends Controller
 
     public function search(Request $request)
     {
-        $size = $request->size;
-        $types = $request->types;
-        $supported_os = $request->supported_os;
-        $deleted_at = $request->deleted_at;
-
-        $query = Storage::query();
-
-        if(isset($size)) {
-            $query->where('size', 'like', '%' . $size . '%');
-        }
-        if(isset($types)) {
-            $query->where('types', $types);
-        }
-        if(isset($supported_os)) {
-            $query->where('supported_os', $supported_os);
-        }
-        if(isset($deleted_at)) {
-            if($deleted_at == 1) {
-                $query->whereNotNull('deleted_at');
-            } elseif ($deleted_at == 0) {
-                $query->whereNull('deleted_at');
-            }
-        }
-
-        $storages = $query->get();
+        $storages = Storage::query()
+        ->when($request->size, function ($query, $size) {
+            return $query->where('size', 'like', '%' . $size . '%');
+        })
+        ->when($request->types, function ($query, $types) {
+            return $query->where('types', $types);
+        })
+        ->when($request->supported_os, function ($query, $supportedOs) {
+            return $query->where('supported_os', $supportedOs);
+        })
+        ->when($request->deleted_at === "1", function ($query) {
+            return $query->whereNotNull('deleted_at');
+        })
+        ->when($request->deleted_at === "0", function ($query) {
+            return $query->whereNull('deleted_at');
+        })
+        ->get();
 
         return view('storages.index', [
             'storages' => $storages,
-            'size' => $size,
-            'types' => $types,
-            'supported_os' => $supported_os,
-            'deleted_at' => $deleted_at,
+            'size' => $request->size,
+            'types' => $request->types,
+            'supported_os' => $request->supported_os,
+            'deleted_at' => $request->deleted_at,
         ]);
     }
 
@@ -190,31 +182,23 @@ class StoragesController extends Controller
         ];
 
         // データ取得＆生成
-        $query = Storage::query();
-
-        $size = $request->size;
-        $types = $request->types;
-        $supported_os = $request->supported_os;
-        $deleted_at = $request->deleted_at;
-
-        if(isset($size)) {
-            $query->where('size', 'like', '%' . $size . '%');
-        }
-        if(isset($types)) {
-            $query->where('types', $types);
-        }
-        if(isset($supported_os)) {
-            $query->where('supported_os', $supported_os);
-        }
-        if(isset($deleted_at)) {
-            if($deleted_at == 1) {
-                $query->whereNotNull('deleted_at');
-            } elseif ($deleted_at == 0) {
-                $query->whereNull('deleted_at');
-            }
-        }
-
-        $storages = $query->get();
+        $storages = Storage::query()
+        ->when($request->size, function ($query, $size) {
+            return $query->where('size', 'like', '%' . $size . '%');
+        })
+        ->when($request->types, function ($query, $types) {
+            return $query->where('types', $types);
+        })
+        ->when($request->supported_os, function ($query, $supportedOs) {
+            return $query->where('supported_os', $supportedOs);
+        })
+        ->when($request->deleted_at === "1", function ($query) {
+            return $query->whereNotNull('deleted_at');
+        })
+        ->when($request->deleted_at === "0", function ($query) {
+            return $query->whereNull('deleted_at');
+        })
+        ->get();
         $this->storages = $storages;
 
         $callback = function()

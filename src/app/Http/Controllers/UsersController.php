@@ -149,38 +149,33 @@ class UsersController extends Controller
 
     public function search(Request $request)
     {
-        $employee_number = $request->employee_number;
-        $email = $request->email;
-        $is_admin = $request->is_admin;
-        $deleted_at = $request->deleted_at;
-
-        $query = User::query();
-
-        if(isset($employee_number)) {
-            $query->where('employee_number', 'like', '%' . $employee_number . '%');
-        }
-        if(isset($email)) {
-            $query->where('email', 'like', '%' . $email . '%');
-        }
-        if(isset($is_admin)) {
-            $query->where('is_admin', $is_admin);
-        }
-        if(isset($deleted_at)) {
-            if($deleted_at == 1) {
-                $query->whereNotNull('deleted_at');
-            } elseif ($deleted_at == 0) {
-                $query->whereNull('deleted_at');
-            }
-        }
-
-        $users = $query->get();
+        $users = User::query()
+        ->when($request->employee_number, function ($query, $employeeNumber) {
+            return $query->where('employee_number', 'like', '%' . $employeeNumber . '%');
+        })
+        ->when($request->email, function ($query, $email) {
+            return $query->where('email', 'like', '%' . $email . '%');
+        })
+        ->when($request->is_admin === "1", function ($query) {
+            return $query->where('is_admin', "1");
+        })
+        ->when($request->is_admin === "0", function ($query) {
+            return $query->where('is_admin', "0");
+        })
+        ->when($request->deleted_at === "1", function ($query) {
+            return $query->whereNotNull('deleted_at');
+        })
+        ->when($request->deleted_at === "0", function ($query) {
+            return $query->whereNull('deleted_at');
+        })
+        ->get();
 
         return view('users.index', [
             'users' => $users,
-            'employee_number' => $employee_number,
-            'email' => $email,
-            'is_admin' => $is_admin,
-            'deleted_at' => $deleted_at,
+            'employee_number' => $request->employee_number,
+            'email' => $request->email,
+            'is_admin' => $request->is_admin,
+            'deleted_at' => $request->deleted_at,
         ]);
     }
 
@@ -196,32 +191,27 @@ class UsersController extends Controller
         ];
 
         // データ取得＆生成
-        $query = User::query();
-
-        $employee_number = $request->employee_number;
-        $email = $request->email;
-        $is_admin = $request->is_admin;
-        $deleted_at = $request->deleted_at;
-
-        if(isset($employee_number)) {
-            $query->where('employee_number', 'like', '%' . $employee_number . '%');
-        }
-        if(isset($email)) {
-            $query->where('email', 'like', '%' . $email . '%');
-        }
-        if(isset($is_admin)) {
-            $query->where('is_admin', $is_admin);
-        }
-        if(isset($deleted_at)) {
-            if($deleted_at == 1) {
-                $query->whereNotNull('deleted_at');
-            } elseif ($deleted_at == 0) {
-                $query->whereNull('deleted_at');
-            }
-        }
-
-        $users = $query->get();
-
+        $users = User::query()
+        ->when($request->employee_number, function ($query, $employeeNumber) {
+            return $query
+                ->where('employee_number', 'like', '%' . $employeeNumber . '%');
+        })
+        ->when($request->email, function ($query, $email) {
+            return $query->where('email', 'like', '%' . $email . '%');
+        })
+        ->when($request->is_admin === "1", function ($query) {
+            return $query->where('is_admin', "1");
+        })
+        ->when($request->is_admin === "0", function ($query) {
+            return $query->where('is_admin', "0");
+        })
+        ->when($request->deleted_at === "1", function ($query) {
+            return $query->whereNotNull('deleted_at');
+        })
+        ->when($request->deleted_at === "0", function ($query) {
+            return $query->whereNull('deleted_at');
+        })
+        ->get();
         $this->users = $users;
 
         $callback = function()
