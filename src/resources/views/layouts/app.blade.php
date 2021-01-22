@@ -37,9 +37,9 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ストレージ</a>
                         <div class="dropdown-menu">
-                            <a href="/storages" class="dropdown-item">ストレージ一覧</a>
+                            <a href="{{ route('storages.index') }}" class="dropdown-item">ストレージ一覧</a>
                             @if(Auth::user()->is_admin == 1)
-                                <a href="/storages/create" class="dropdown-item">ストレージ新規作成</a>
+                                <a href="{{ route('storages.create') }}" class="dropdown-item">ストレージ新規作成</a>
                             @endif
                         </div>
                     </li>
@@ -47,8 +47,8 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">関連案件情報</a>
                         <div class="dropdown-menu">
-                            <a href="/opportunity_relations" class="dropdown-item">関連案件情報一覧</a>
-                            <a href="/opportunity_relations/create" class="dropdown-item">関連案件情報新規作成</a>
+                            <a href="{{ route('opportunity_relations.index') }}" class="dropdown-item">関連案件情報一覧</a>
+                            <a href="{{ route('opportunity_relations.create') }}" class="dropdown-item">関連案件情報新規作成</a>
                         </div>
                     </li>
 
