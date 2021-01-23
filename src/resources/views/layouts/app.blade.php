@@ -48,7 +48,9 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">関連案件情報</a>
                         <div class="dropdown-menu">
                             <a href="{{ route('opportunity_relations.index') }}" class="dropdown-item">関連案件情報一覧</a>
-                            <a href="{{ route('opportunity_relations.create') }}" class="dropdown-item">関連案件情報新規作成</a>
+                            @if(Auth::user()->is_admin == 1)
+                                <a href="{{ route('opportunity_relations.create') }}" class="dropdown-item">関連案件情報新規作成</a>
+                            @endif
                         </div>
                     </li>
 
@@ -60,7 +62,6 @@
                         </li>
 
                         @if(Auth::user()->is_admin == 1)
-
                             <li class="nav-item dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ユーザー</a>
                                 <div class="dropdown-menu">
@@ -68,7 +69,6 @@
                                     <a href="{{ route('users.create') }}" class="dropdown-item">ユーザー新規作成</a>
                                 </div>
                             </li>
-
                         @endif
 
                 </ul>

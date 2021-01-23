@@ -38,15 +38,17 @@
             </div>
         </form>
 
-        <form action="{{ route('opportunity_relations.csv') }}" method="post">
-            @csrf
-            <input type="hidden" name="storage_id" value="{{$storage_id}}">
-            <input type="hidden" name="opportunity_id" value="{{$opportunity_id}}">
-            <input type="hidden" name="deleted_at" value="{{$deleted_at}}">
-            <div class="form-group row">
-                <button type="submit" class="btn btn-info col-12">検索結果をcsv出力</button>
-            </div>
-        </form>
+        @if(Auth::user()->is_admin == 1)
+            <form action="{{ route('opportunity_relations.csv') }}" method="post">
+                @csrf
+                <input type="hidden" name="storage_id" value="{{$storage_id}}">
+                <input type="hidden" name="opportunity_id" value="{{$opportunity_id}}">
+                <input type="hidden" name="deleted_at" value="{{$deleted_at}}">
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-info col-12">検索結果をcsv出力</button>
+                </div>
+            </form>
+        @endif
 
     </div>
 
