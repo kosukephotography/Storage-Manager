@@ -118,7 +118,7 @@ class UsersController extends Controller
             'first_name' => $request->first_name,
             'is_admin' => $request->is_admin,
             'updated_by' => $by_id,
-            'deleted_at' => $request->deleted_at ? $now : null,
+            'deleted_at' => $request->deleted_at === "1" ? $now : null,
         ])
         ->save();
 

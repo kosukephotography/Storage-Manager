@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\OpportunityRelation;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\OpportunityRelationsStoreRequest;
+use App\Http\Requests\OpportunityRelationsUpdateRequest;
 
 class OpportunityRelationsController extends Controller
 {
@@ -44,9 +47,18 @@ class OpportunityRelationsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OpportunityRelationsStoreRequest $request)
     {
-        //
+        $by_id = Auth::user()->id;
+
+        $new_opportunity_relations = OpportunityRelation::create([
+            'storage_id' => $request->storage_id,
+            'opportunity_id' => $request->opportunity_id,
+            'created_by' => $by_id,
+            'updated_by' => $by_id,
+        ]);
+
+        return redirect()->route('opportunity_relations.show', $new_opportunity_relations->id)->with('information', 'レコードを作成しました。');
     }
 
     /**
@@ -72,7 +84,11 @@ class OpportunityRelationsController extends Controller
      */
     public function edit($id)
     {
-        return view('opportunity_relations.edit');
+        $opportunity_relations = OpportunityRelation::find($id);
+
+        return view('opportunity_relations.edit', [
+            'opportunity_relations' => $opportunity_relations,
+        ]);
     }
 
     /**
@@ -82,9 +98,20 @@ class OpportunityRelationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OpportunityRelationsUpdateRequest $request, $id)
     {
-        //
+        $now = \Carbon\Carbon::now();
+        $opportunity_relations = OpportunityRelation::find($id);
+        $by_id = Auth::user()->id;
+
+        $opportunity_relations->fill([
+            'storage_id' => $request->storage_id,
+            'opportunity_id' => $request->opportunity_id,
+            'deleted_at' => $request->deleted_at === "1" ? $now : null,
+        ])
+        ->save();
+
+        return redirect()->route('opportunity_relations.show', $opportunity_relations->id)->with('information', 'レコードを更新しました。');
     }
 
     /**

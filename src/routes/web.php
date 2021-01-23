@@ -45,11 +45,8 @@ Route::group(['middleware' => ['auth']], function(){
 
         Route::prefix('/opportunity_relations')->name('opportunity_relations.')->group(function () {
             Route::post('/csv', [OpportunityRelationsController::class, 'csv'])->name('csv');
-            Route::post('/search', [OpportunityRelationsController::class, 'search'])->name('search');
-            Route::get('', [OpportunityRelationsController::class, 'index'])->name('index');
             Route::post('', [OpportunityRelationsController::class, 'store'])->name('store');
             Route::get('/create', [OpportunityRelationsController::class, 'create'])->name('create');
-            Route::get('/{id}', [OpportunityRelationsController::class, 'show'])->name('show');
             Route::put('/{id}', [OpportunityRelationsController::class, 'update'])->name('update');
             Route::get('/{id}/edit', [OpportunityRelationsController::class, 'edit'])->name('edit');
         });
@@ -67,6 +64,11 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('/{id}', [StoragesController::class, 'show'])->name('show');
     });
 
+    Route::prefix('/opportunity_relations')->name('opportunity_relations.')->group(function () {
+        Route::post('/search', [OpportunityRelationsController::class, 'search'])->name('search');
+        Route::get('', [OpportunityRelationsController::class, 'index'])->name('index');
+        Route::get('/{id}', [OpportunityRelationsController::class, 'show'])->name('show');
+    });
 
 
 

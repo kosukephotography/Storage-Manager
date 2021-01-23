@@ -5,28 +5,19 @@
     <h1 class="text-center">関連案件情報 新規作成ページ</h1>
 
     <div class="m-4">
-        <form action="/opportunity_relations/0" method="get">
+        <form action="{{ route('opportunity_relations.store') }}" method="post">
+            @csrf
             <div class="form-group row">
-                <label class="col-2 col-form-label">ストレージID</label>
+                <label class="col-2 col-form-label" for="storage_id">ストレージID</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" name="">
+                    <input type="text" class="form-control" name="storage_id" id="storage_id" value="{{ old('storage_id') }}">
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-2 col-form-label">SF案件ID</label>
+                <label class="col-2 col-form-label" for="opportunity_id">SF案件ID</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" name="">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-2 col-form-label">無効化フラグ</label>
-                <div class="col-10">
-                    <select class="form-control">
-                        <option>無効</option>
-                        <option>有効</option>
-                    </select>
+                    <input type="text" class="form-control" name="opportunity_id" id="opportunity_id" value="{{ old('opportunity_id') }}">
                 </div>
             </div>
 

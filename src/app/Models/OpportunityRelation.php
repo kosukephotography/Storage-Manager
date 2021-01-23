@@ -9,6 +9,14 @@ class OpportunityRelation extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'storage_id',
+        'opportunity_id',
+        'deleted_at',
+        'created_by',
+        'updated_by',
+    ];
+
     public function createdByUser()
     {
         return $this->hasOne(\App\Models\User::class, 'id', 'created_by');

@@ -121,7 +121,7 @@ class StoragesController extends Controller
             'supported_os' => $request->supported_os,
             'recovery_key' => $request->recovery_key,
             'storage_password' => $request->storage_password,
-            'deleted_at' => $request->deleted_at ? $now : null,
+            'deleted_at' => $request->deleted_at === "1" ? $now : null,
             'reason' => $request->reason,
             'updated_by' => $by_id,
         ])
