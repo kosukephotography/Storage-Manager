@@ -9,6 +9,11 @@ class Reservation extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'status',
+        'updated_by',
+    ];
+
     public function createdByUser()
     {
         return $this->hasOne(\App\Models\User::class, 'id', 'created_by');

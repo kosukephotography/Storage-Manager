@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reservation;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationsController extends Controller
 {
@@ -54,7 +55,11 @@ class ReservationsController extends Controller
      */
     public function show($id)
     {
-        return view('reservations.show');
+        $reservation = Reservation::with(['createdByUser', 'updatedByUser'])->findOrFail($id);
+
+        return view('reservations.show', [
+            'reservation' => $reservation,
+        ]);
     }
 
     /**
@@ -65,7 +70,11 @@ class ReservationsController extends Controller
      */
     public function edit($id)
     {
-        return view('reservations.edit');
+        $reservation = Reservation::findOrFail($id);
+
+        return view('reservations.edit', [
+            'reservation' => $reservation,
+        ]);
     }
 
     /**
@@ -77,7 +86,17 @@ class ReservationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $now = \Carbon\Carbon::now();
+        $reservation = Reservation::findOrFail($id);
+        $by_id = Auth::user()->id;
+
+        $reservation->fill([
+            'status' => $request->status,
+            'updated_by' => $by_id,
+        ])
+        ->save();
+
+        return redirect()->route('reservations.show', $reservation->id)->with('information', 'レコードを更新しました。');
     }
 
     /**
