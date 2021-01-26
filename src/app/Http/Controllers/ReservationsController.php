@@ -97,24 +97,8 @@ class ReservationsController extends Controller
 
     public function search(Request $request)
     {
-        $reservations = Reservation::query()
-        ->when($request->storage_id, function ($query, $storageId) {
-            return $query->where('storage_id', 'like', '%' . $storageId . '%');
-        })
-        ->when($request->status, function ($query, $status) {
-            return $query->where('status', $status);
-        })
-        ->when($request->start_date && $request->end_date, function ($query) use ($request) {
-            return $query->where('start_date', '<=', $request->end_date)
-                ->where('end_date', '>=', $request->start_date);
-        })
-        ->when($request->start_date && !isset($request->end_date), function ($query) use ($request) {
-            return $query->where('end_date', '>=', $request->start_date);
-        })
-        ->when(!isset($request->start_date) && $request->end_date, function ($query) use ($request) {
-            return $query->where('start_date', '<=', $request->end_date);
-        })
-        ->get();
+
+        $reservations = $this->searchQuery($request);
 
         return view('reservations.index', [
             'reservations' => $reservations,
@@ -137,27 +121,9 @@ class ReservationsController extends Controller
         ];
 
         // データ取得＆生成
-        $reservations = Reservation::query()
-        ->when($request->storage_id, function ($query, $storageId) {
-            return $query->where('storage_id', 'like', '%' . $storageId . '%');
-        })
-        ->when($request->status, function ($query, $status) {
-            return $query->where('status', $status);
-        })
-        ->when($request->start_date && $request->end_date, function ($query) use ($request) {
-            return $query->where('start_date', '<=', $request->end_date)
-                ->where('end_date', '>=', $request->start_date);
-        })
-        ->when($request->start_date && !isset($request->end_date), function ($query) use ($request) {
-            return $query->where('end_date', '>=', $request->start_date);
-        })
-        ->when(!isset($request->start_date) && $request->end_date, function ($query) use ($request) {
-            return $query->where('start_date', '<=', $request->end_date);
-        })
-        ->get();
-        $this->reservations = $reservations;
+        $reservations = $this->searchQuery($request);
 
-        $callback = function()
+        $callback = function() use ($reservations)
         {
             $createCsvFile = fopen('php://output', 'w'); //ファイル作成
             
@@ -174,8 +140,6 @@ class ReservationsController extends Controller
             mb_convert_variables('SJIS-win', 'UTF-8', $columns); //文字化け対策
     
             fputcsv($createCsvFile, $columns); //1行目の情報を追記
-
-            $reservations = $this->reservations;
 
             foreach ($reservations as $reservation) {  //データを1行ずつ回す
                 $csv = [
@@ -196,5 +160,27 @@ class ReservationsController extends Controller
         };
         
         return response()->stream($callback, 200, $headers);
+    }
+
+    private function searchQuery(Request $request)
+    {
+        return Reservation::query()
+        ->when($request->storage_id, function ($query, $storageId) {
+            return $query->where('storage_id', 'like', '%' . $storageId . '%');
+        })
+        ->when($request->status, function ($query, $status) {
+            return $query->where('status', $status);
+        })
+        ->when($request->start_date && $request->end_date, function ($query) use ($request) {
+            return $query->where('start_date', '<=', $request->end_date)
+                ->where('end_date', '>=', $request->start_date);
+        })
+        ->when($request->start_date && !isset($request->end_date), function ($query) use ($request) {
+            return $query->where('end_date', '>=', $request->start_date);
+        })
+        ->when(!isset($request->start_date) && $request->end_date, function ($query) use ($request) {
+            return $query->where('start_date', '<=', $request->end_date);
+        })
+        ->get();
     }
 }
