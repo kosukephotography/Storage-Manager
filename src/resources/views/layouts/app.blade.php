@@ -35,6 +35,13 @@
                     </ul>
 
                     <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">予約</a>
+                        <div class="dropdown-menu">
+                            <a href="{{ route('reservations.index') }}" class="dropdown-item">予約一覧</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ストレージ</a>
                         <div class="dropdown-menu">
                             <a href="{{ route('storages.index') }}" class="dropdown-item">ストレージ一覧</a>
@@ -53,13 +60,6 @@
                             @endif
                         </div>
                     </li>
-
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">予約</a>
-                            <div class="dropdown-menu">
-                                <a href="/reservations" class="dropdown-item">予約一覧</a>
-                            </div>
-                        </li>
 
                         @if(Auth::user()->is_admin == 1)
                             <li class="nav-item dropdown active">

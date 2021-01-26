@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\StoragesController;
 use App\Http\Controllers\OpportunityRelationsController;
+use App\Http\Controllers\ReservationsController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 
 /*
@@ -50,6 +51,17 @@ Route::group(['middleware' => ['auth']], function(){
             Route::put('/{id}', [OpportunityRelationsController::class, 'update'])->name('update');
             Route::get('/{id}/edit', [OpportunityRelationsController::class, 'edit'])->name('edit');
         });
+
+        Route::prefix('/reservations')->name('reservations.')->group(function () {
+            Route::post('csv', [ReservationsController::class, 'csv'])->name('csv');
+            Route::post('/search', [ReservationsController::class, 'search'])->name('search');
+            Route::get('', [ReservationsController::class, 'index'])->name('index');
+            Route::post('', [ReservationsController::class, 'store'])->name('store');
+            Route::get('/create', [ReservationsController::class, 'create'])->name('create');
+            Route::get('/{id}', [ReservationsController::class, 'show'])->name('show');
+            Route::put('/{id}', [ReservationsController::class, 'update'])->name('update');
+            Route::get('/{id}/edit', [ReservationsController::class, 'edit'])->name('edit');
+        });
     });
 
     // 認証済ユーザーに許可するルート
@@ -77,7 +89,6 @@ Route::group(['middleware' => ['auth']], function(){
 
 
     // 未開発の保留ルート
-    Route::resource('reservations', 'App\Http\Controllers\ReservationsController');
     Route::get('/dashboard', 'App\Http\Controllers\ReservationsController@dashboard');
     Route::get('/', 'App\Http\Controllers\ReservationsController@dashboard');
 });

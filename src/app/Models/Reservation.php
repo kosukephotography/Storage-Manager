@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     use HasFactory;
+
+    public function createdByUser()
+    {
+        return $this->hasOne(\App\Models\User::class, 'id', 'created_by');
+    }
+
+    public function updatedByUser()
+    {
+        return $this->hasOne(\App\Models\User::class, 'id', 'updated_by');
+    }
 }
