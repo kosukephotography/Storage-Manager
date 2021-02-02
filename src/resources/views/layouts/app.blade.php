@@ -38,6 +38,9 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">予約</a>
                         <div class="dropdown-menu">
                             <a href="{{ route('reservations.index') }}" class="dropdown-item">予約一覧</a>
+                            @if(Auth::user()->is_admin == 1)
+                                <a href="{{ route('reservations.create') }}" class="dropdown-item">予約新規作成</a>
+                            @endif
                         </div>
                     </li>
 

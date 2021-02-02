@@ -54,11 +54,7 @@ Route::group(['middleware' => ['auth']], function(){
 
         Route::prefix('/reservations')->name('reservations.')->group(function () {
             Route::post('csv', [ReservationsController::class, 'csv'])->name('csv');
-            Route::post('/search', [ReservationsController::class, 'search'])->name('search');
-            Route::get('', [ReservationsController::class, 'index'])->name('index');
             Route::post('', [ReservationsController::class, 'store'])->name('store');
-            Route::get('/create', [ReservationsController::class, 'create'])->name('create');
-            Route::get('/{id}', [ReservationsController::class, 'show'])->name('show');
             Route::put('/{id}', [ReservationsController::class, 'update'])->name('update');
             Route::get('/{id}/edit', [ReservationsController::class, 'edit'])->name('edit');
         });
@@ -82,6 +78,12 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('/{id}', [OpportunityRelationsController::class, 'show'])->name('show');
     });
 
+    Route::prefix('/reservations')->name('reservations.')->group(function () {
+        Route::post('/search', [ReservationsController::class, 'search'])->name('search');
+        Route::get('', [ReservationsController::class, 'index'])->name('index');
+        Route::get('/create', [ReservationsController::class, 'create'])->name('create');
+        Route::get('/{id}', [ReservationsController::class, 'show'])->name('show');
+    });
 
 
 

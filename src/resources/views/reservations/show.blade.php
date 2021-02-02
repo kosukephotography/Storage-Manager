@@ -45,8 +45,10 @@
         </table>
     </div>
 
-    <div class="m-4">
-        <a href="{{ route('reservations.edit', ['id' => $reservation->id]) }}" class="btn btn-primary col-12">編集</a>
-    </div>
+    @if(Auth::user()->is_admin == 1)
+        <div class="m-4">
+            <a href="{{ route('reservations.edit', ['id' => $reservation->id]) }}" class="btn btn-primary col-12">編集</a>
+        </div>
+    @endif
 
 @endsection

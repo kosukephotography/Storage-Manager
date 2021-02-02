@@ -48,16 +48,18 @@
             </div>
         </form>
 
-        <form action="{{ route('reservations.csv') }}" method="post">
-            @csrf
-            <input type="hidden" name="storage_id" value="{{$storage_id}}">
-            <input type="hidden" name="status" value="{{$status}}">
-            <input type="hidden" name="start_date" value="{{$start_date}}">
-            <input type="hidden" name="end_date" value="{{$end_date}}">
-            <div class="form-group row">
-                <button type="submit" class="btn btn-info col-12">検索結果をcsv出力</button>
-            </div>
-        </form>
+        @if(Auth::user()->is_admin == 1)
+            <form action="{{ route('reservations.csv') }}" method="post">
+                @csrf
+                <input type="hidden" name="storage_id" value="{{$storage_id}}">
+                <input type="hidden" name="status" value="{{$status}}">
+                <input type="hidden" name="start_date" value="{{$start_date}}">
+                <input type="hidden" name="end_date" value="{{$end_date}}">
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-info col-12">検索結果をcsv出力</button>
+                </div>
+            </form>
+        @endif
 
     </div>
 
