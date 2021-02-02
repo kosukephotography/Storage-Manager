@@ -44,7 +44,18 @@ class ReservationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $by_id = Auth::user()->id;
+
+        $new_reservation = Reservation::create([
+            'storage_id' => $request->storage_id,
+            'status' => '予約中',
+            'created_by' => $by_id,
+            'updated_by' => $by_id,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+        ]);
+
+        return redirect()->route('reservations.show', $new_reservation->id)->with('information', 'レコードを作成しました。');
     }
 
     /**

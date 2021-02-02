@@ -12,6 +12,10 @@ class Reservation extends Model
     protected $fillable = [
         'status',
         'updated_by',
+        'created_by',
+        'storage_id',
+        'start_date',
+        'end_date',
     ];
 
     public function createdByUser()
