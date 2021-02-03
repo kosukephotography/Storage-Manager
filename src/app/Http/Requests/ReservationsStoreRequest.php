@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\ReservationsRule;
 
-class ReservationsUpdateRequest extends FormRequest
+class ReservationsStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +25,14 @@ class ReservationsUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => ['required',
-                Rule::in(['予約中', '貸出済', '期限切れ未返却', '返却済', 'キャンセル']),
+            'storage_id' => ['required', 'exists:storages,id'],
+            'end_date' => ['required', 'date'],
+            'start_date' => ['required', 'date',
+                new ReservationsRule(
+                    $this->storage_id,
+                    $this->start_date,
+                    $this->end_date,
+                )
             ],
         ];
     }

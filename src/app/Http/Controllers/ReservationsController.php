@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ReservationsUpdateRequest;
+use App\Http\Requests\ReservationsStoreRequest;
 
 class ReservationsController extends Controller
 {
@@ -42,7 +44,7 @@ class ReservationsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReservationsStoreRequest $request)
     {
         $by_id = Auth::user()->id;
 
@@ -95,7 +97,7 @@ class ReservationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReservationsUpdateRequest $request, $id)
     {
         $now = \Carbon\Carbon::now();
         $reservation = Reservation::findOrFail($id);

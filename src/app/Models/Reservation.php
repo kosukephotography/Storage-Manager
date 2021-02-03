@@ -27,4 +27,19 @@ class Reservation extends Model
     {
         return $this->hasOne(\App\Models\User::class, 'id', 'updated_by');
     }
+
+    public function scopeWhereHasReservation($query, $start, $end) {
+        $query->where(function($q) use($start, $end) {
+            $q->where('start_date', '>=', $start)
+                ->where('start_date', '<=', $end);
+        })
+        ->orWhere(function($q) use($start, $end) {
+            $q->where('end_date', '>=', $start)
+                ->where('end_date', '<=', $end);
+        })
+        ->orWhere(function($q) use($start, $end) {
+            $q->where('start_date', '<=', $start)
+                ->where('end_date', '>=', $end);
+        });
+    }
 }
