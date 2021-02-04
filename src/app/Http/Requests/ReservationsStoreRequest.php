@@ -27,12 +27,7 @@ class ReservationsStoreRequest extends FormRequest
     {
         return [
             'storage_id' => ['required', 'exists:storages,id'],
-            'end_date' => ['required', 'date',
-                new ReservationsCheckStartDateRule(
-                    $this->start_date,
-                    $this->end_date,
-                )
-            ],
+            'end_date' => ['required', 'date', 'after_or_equal:start_date'],
             'start_date' => ['required', 'date',
                 new ReservationsRule(
                     $this->storage_id,
