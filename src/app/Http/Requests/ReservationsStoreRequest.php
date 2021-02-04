@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\ReservationsRule;
+use App\Rules\ReservationsCheckStartDateRule;
 
 class ReservationsStoreRequest extends FormRequest
 {
@@ -26,7 +27,12 @@ class ReservationsStoreRequest extends FormRequest
     {
         return [
             'storage_id' => ['required', 'exists:storages,id'],
-            'end_date' => ['required', 'date'],
+            'end_date' => ['required', 'date',
+                new ReservationsCheckStartDateRule(
+                    $this->start_date,
+                    $this->end_date,
+                )
+            ],
             'start_date' => ['required', 'date',
                 new ReservationsRule(
                     $this->storage_id,
