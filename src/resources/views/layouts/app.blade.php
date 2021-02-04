@@ -25,14 +25,10 @@
 <body>
     <header class="sticky-top mb-4">
         <nav class="navbar navbar-expand navbar-dark bg-dark"> 
-            <a class="navbar-brand" href="/">Storage Manager</a>
+            <a class="navbar-brand" href="{{ route('mypage') }}">Storage Manager</a>
 
             @if (Auth::check())
                 <ul class="navbar-nav">
-
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a href="/dashboard" class="nav-link">ダッシュボード</a></li>
-                    </ul>
 
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">予約</a>

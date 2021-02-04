@@ -43,8 +43,7 @@
         @foreach ($reservations as $reservation)
 
             <tr>
-                <td class="text-center"><a href="{{ route('reservations.show', ['reservation' => $reservation->id]) }}">{{ $reservation->id }}</a></td>
-                <!-- ↑routeいじるときにreservationをidに変更する -->
+                <td class="text-center"><a href="{{ route('reservations.show', ['id' => $reservation->id]) }}">{{ $reservation->id }}</a></td>
                 <td class="text-center"><a href="{{ route('storages.show', ['id' => $reservation->storage_id]) }}">{{ $reservation->storage_id }}</a></td>
                 <td class="text-center">{{ $reservation->status }}</td>
                 <td class="text-center">{{ $reservation->start_date }}</td>
